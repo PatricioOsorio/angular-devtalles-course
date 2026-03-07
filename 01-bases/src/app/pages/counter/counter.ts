@@ -12,7 +12,7 @@ export class Counter {
   readonly counter = signal(INITIAL_VALUE);
 
   increaseBy(value: number) {
-    this.counter.update((current) => current + value);
+    this.counter.update((c) => c + value);
   }
 
   resetCounter() {
