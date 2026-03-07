@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { NgIf } from '../../../../node_modules/@angular/common/types/_common_module-chunk';
+
+const INITIAL_VALUE = 10;
 
 @Component({
   selector: 'app-counter',
@@ -8,9 +9,13 @@ import { NgIf } from '../../../../node_modules/@angular/common/types/_common_mod
   styleUrl: './counter.css',
 })
 export class Counter {
-  protected readonly counter = signal(0);
+  readonly counter = signal(INITIAL_VALUE);
 
-  protected increaseBy(value: number) {
+  increaseBy(value: number) {
     this.counter.update((current) => current + value);
+  }
+
+  resetCounter() {
+    this.counter.set(INITIAL_VALUE);
   }
 }
