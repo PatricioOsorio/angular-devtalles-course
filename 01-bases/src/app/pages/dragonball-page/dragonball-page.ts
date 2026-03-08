@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, computed, signal } from '@angular/core';
 
 export interface ICharacter {
   id: number;
@@ -16,7 +17,7 @@ const INITIAL_CHARACTERS: ICharacter[] = [
 
 @Component({
   selector: 'app-dragonball-page',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './dragonball-page.html',
 })
 export class DragonballPage {
