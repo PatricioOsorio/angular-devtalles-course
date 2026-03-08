@@ -22,4 +22,22 @@ const INITIAL_CHARACTERS: ICharacter[] = [
 })
 export class DragonballPage {
   readonly characters = signal<ICharacter[]>(INITIAL_CHARACTERS);
+
+  readonly name = signal('gohan');
+  readonly power = signal(1000);
+
+  handleInputName($event: Event) {
+    this.name.set(($event.target as HTMLInputElement).value);
+  }
+
+  handleInputPower($event: Event) {
+    this.power.set(Number(($event.target as HTMLInputElement).value));
+  }
+
+  handleAddCharacter() {
+    this.characters.update((c) => [
+      ...c,
+      { id: +new Date(), name: this.name(), power: this.power() },
+    ]);
+  }
 }
