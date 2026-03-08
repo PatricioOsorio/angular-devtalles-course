@@ -9,10 +9,13 @@
     <dd>{{ age() }}</dd>
 
     <dt class="font-semibold">Method:</dt>
-    <dd>{{ getHeroDescription() }}</dd>
+    <dd>{{ heroDescription() }}</dd>
 
-    <dt class="font-semibold">Capitalized:</dt>
+    <dt class="font-semibold">Capitalized (pipe):</dt>
     <dd>{{ name() | uppercase }}</dd>
+
+    <dt class="font-semibold">Capitalized (method):</dt>
+    <dd>{{ capitalizeName() }}</dd>
   </dl>
 
   <div class="flex flex-wrap gap-2">
