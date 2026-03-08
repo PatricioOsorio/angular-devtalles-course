@@ -1,9 +1,13 @@
-<section class="card gap-4 rounded-md border border-gray-950 p-4 shadow-lg">
-  <h2>Counter app</h2>
-  <h3 class="text-primary">{{ counter() }}</h3>
-  <div class="flex gap-4">
+<section class="card border-base-300 bg-base-100 gap-4 border p-6 shadow-md">
+  <h1>Counter</h1>
+
+  <div class="rounded-box bg-base-200 p-4 text-center">
+    <span class="text-primary text-4xl font-bold">{{ counter() }}</span>
+  </div>
+
+  <div class="flex flex-wrap gap-2">
     <button (click)="increaseBy(1)" class="btn btn-primary">+1</button>
-    <button (click)="resetCounter()" class="btn btn-primary">Reset</button>
     <button (click)="increaseBy(-1)" class="btn btn-primary">-1</button>
+    <button (click)="resetCounter()" class="btn btn-outline">Reset</button>
   </div>
 </section>

@@ -6,7 +6,6 @@ const INITIAL_VALUE = 10;
   selector: 'app-counter',
   imports: [],
   templateUrl: './counter.html',
-  styleUrl: './counter.css',
 })
 export class Counter {
   readonly counter = signal(INITIAL_VALUE);

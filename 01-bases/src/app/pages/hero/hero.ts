@@ -3,11 +3,11 @@ import { Component, signal } from '@angular/core';
 
 const NAME = 'Iron Man';
 const AGE = 45;
+
 @Component({
   selector: 'app-hero',
   imports: [UpperCasePipe],
   templateUrl: './hero.html',
-  styleUrl: './hero.css',
 })
 export class Hero {
   readonly name = signal(NAME);

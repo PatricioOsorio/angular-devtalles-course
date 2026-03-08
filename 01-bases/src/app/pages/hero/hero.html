@@ -1,23 +1,23 @@
 <section class="card border-base-300 bg-base-100 gap-4 border p-6 shadow-md">
-  <h1 class="text-3xl">{{ name() }}</h1>
+  <h1>{{ name() }}</h1>
 
   <dl class="grid grid-cols-[auto_1fr] gap-x-4 gap-y-2">
-    <dt class="font-semibold">Nombre:</dt>
+    <dt class="font-semibold">Name:</dt>
     <dd>{{ name() }}</dd>
 
-    <dt class="font-semibold">Edad:</dt>
+    <dt class="font-semibold">Age:</dt>
     <dd>{{ age() }}</dd>
 
-    <dt class="font-semibold">Método:</dt>
+    <dt class="font-semibold">Method:</dt>
     <dd>{{ getHeroDescription() }}</dd>
 
-    <dt class="font-semibold">Capitalizado:</dt>
+    <dt class="font-semibold">Capitalized:</dt>
     <dd>{{ name() | uppercase }}</dd>
   </dl>
 
   <div class="flex flex-wrap gap-2">
-    <button (click)="changeHero()" class="btn btn-primary">Cambiar nombre</button>
-    <button (click)="changeAge()" class="btn btn-primary">Cambiar edad</button>
+    <button (click)="changeHero()" class="btn btn-primary">Change Name</button>
+    <button (click)="changeAge()" class="btn btn-primary">Change Age</button>
     <button (click)="resetForm()" class="btn btn-outline">Reset</button>
   </div>
 </section>
