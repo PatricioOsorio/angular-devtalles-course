@@ -2,7 +2,13 @@
   <a routerLink="/" class="text-lg font-bold">Angular Bases</a>
 
   <nav class="flex items-center gap-2">
-    <a routerLink="/" class="btn btn-sm btn-ghost">Counter</a>
-    <a routerLink="/hero" class="btn btn-sm btn-ghost">Hero</a>
+    <a
+      [routerLinkActiveOptions]="{ exact: true }"
+      routerLink="/"
+      routerLinkActive="text-primary"
+      class="btn btn-sm btn-ghost"
+      >Counter</a
+    >
+    <a routerLink="/hero" routerLinkActive="text-primary" class="btn btn-sm btn-ghost">Hero</a>
   </nav>
 </div>
