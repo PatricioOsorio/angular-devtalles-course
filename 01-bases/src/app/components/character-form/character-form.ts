@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, output, signal } from '@angular/core';
+
 import { ICharacter } from '@app/interfaces/character';
 
 @Component({
@@ -10,6 +11,8 @@ export class CharacterForm {
   readonly name = signal<string>('');
   readonly power = signal<number>(0);
 
+  readonly characterAdded = output<ICharacter>();
+
   onNameInput(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.name.set(value);
@@ -20,12 +23,12 @@ export class CharacterForm {
     this.power.set(value);
   }
 
-  onReset() {
+  reset() {
     this.name.set('');
     this.power.set(0);
   }
 
-  onAddCharacter() {
+  addCharacter() {
     const isValid = this.name() && this.power() && this.power() > 0;
 
     if (!isValid) return;
@@ -36,10 +39,8 @@ export class CharacterForm {
       power: this.power(),
     };
 
-    console.log(newCharacter);
+    this.characterAdded.emit(newCharacter);
 
-    // this.characters.update((c) => [...c, newCharacter]);
-
-    this.onReset();
+    this.reset();
   }
 }

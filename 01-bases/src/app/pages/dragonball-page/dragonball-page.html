@@ -6,7 +6,7 @@
 
   <div class="grid gap-4 md:grid-cols-2">
     <app-card title="Form" description="Agrega un nuevo personaje a la lista">
-      <app-character-form />
+      <app-character-form (characterAdded)="addCharacter($event)" />
     </app-card>
 
     <app-card title="List" description="Total characters: {{ characters().length }}">

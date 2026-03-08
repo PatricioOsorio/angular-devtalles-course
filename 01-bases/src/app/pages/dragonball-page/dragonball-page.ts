@@ -21,26 +21,7 @@ const INITIAL_CHARACTERS: ICharacter[] = [
 export class DragonballPage {
   readonly characters = signal<ICharacter[]>(INITIAL_CHARACTERS);
 
-
-
-  // onReset() {
-  //   this.name.set('');
-  //   this.power.set(0);
-  // }
-
-  // onAddCharacter() {
-  //   const isValid = this.name() && this.power() && this.power() > 0;
-
-  //   if (!isValid) return;
-
-  //   const newCharacter: ICharacter = {
-  //     id: +new Date(),
-  //     name: this.name(),
-  //     power: this.power(),
-  //   };
-
-  //   this.characters.update((c) => [...c, newCharacter]);
-
-  //   this.onReset();
-  // }
+  addCharacter(newCharacter: ICharacter) {
+    this.characters.update((c) => [...c, newCharacter]);
+  }
 }
