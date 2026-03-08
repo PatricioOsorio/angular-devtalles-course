@@ -21,32 +21,26 @@ const INITIAL_CHARACTERS: ICharacter[] = [
 export class DragonballPage {
   readonly characters = signal<ICharacter[]>(INITIAL_CHARACTERS);
 
-  readonly name = signal('');
-  readonly power = signal(0);
 
-  handleInputName($event: Event) {
-    this.name.set(($event.target as HTMLInputElement).value);
-  }
 
-  handleInputPower($event: Event) {
-    this.power.set(+($event.target as HTMLInputElement).value);
-  }
+  // onReset() {
+  //   this.name.set('');
+  //   this.power.set(0);
+  // }
 
-  handleReset() {
-    this.name.set('');
-    this.power.set(0);
-  }
+  // onAddCharacter() {
+  //   const isValid = this.name() && this.power() && this.power() > 0;
 
-  handleAddCharacter() {
-    const isValid = this.name() && this.power() && this.power() > 0;
+  //   if (!isValid) return;
 
-    if (!isValid) return;
+  //   const newCharacter: ICharacter = {
+  //     id: +new Date(),
+  //     name: this.name(),
+  //     power: this.power(),
+  //   };
 
-    this.characters.update((c) => [
-      ...c,
-      { id: +new Date(), name: this.name(), power: this.power() },
-    ]);
+  //   this.characters.update((c) => [...c, newCharacter]);
 
-    this.handleReset();
-  }
+  //   this.onReset();
+  // }
 }

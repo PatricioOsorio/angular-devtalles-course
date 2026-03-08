@@ -5,43 +5,9 @@
   </header>
 
   <div class="grid gap-4 md:grid-cols-2">
-    <section class="card border-base-300 bg-base-100 border shadow-sm">
-      <div class="card-body">
-        <h2 class="card-title text-lg">Agregar personaje: {{ name() }}</h2>
-
-        <label class="form-control w-full">
-          <span class="label-text mb-1 text-sm">Nombre</span>
-          <input
-            (input)="handleInputName($event)"
-            [value]="name()"
-            class="input input-bordered w-full"
-            type="text"
-            placeholder="Ej: Goku"
-          />
-        </label>
-
-        <label class="form-control w-full">
-          <span class="label-text mb-1 text-sm">Poder</span>
-          <input
-            (input)="handleInputPower($event)"
-            [value]="power()"
-            class="input input-bordered w-full"
-            type="number"
-            placeholder="Ej: 9000"
-          />
-        </label>
-
-        <div class="card-actions justify-end">
-          <button (click)="handleAddCharacter()" class="btn btn-primary" type="button">
-            Agregar
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- <app-card title="Form" description="Agrega un nuevo personaje a la lista">
-    <app-character-form (onAddCharacter)="handleAddCharacter($event)" />
-  </app-card> -->
+    <app-card title="Form" description="Agrega un nuevo personaje a la lista">
+      <app-character-form />
+    </app-card>
 
     <app-card title="List" description="Total characters: {{ characters().length }}">
       <app-character-list [characters]="characters()" />
