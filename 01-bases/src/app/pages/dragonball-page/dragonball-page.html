@@ -39,24 +39,12 @@
       </div>
     </section>
 
-    <section class="card border-base-300 bg-base-100 border shadow-sm">
-      <div class="card-body">
-        <h2 class="card-title text-lg">Listado</h2>
-        <p class="text-sm opacity-70">Total de personajes: {{ characters().length }}</p>
+    <!-- <app-card title="Form" description="Agrega un nuevo personaje a la lista">
+    <app-character-form (onAddCharacter)="handleAddCharacter($event)" />
+  </app-card> -->
 
-        <ul class="menu bg-base-100 w-full p-0">
-          @for (character of characters(); track character.id; let idx = $index) {
-            <li class="rounded-box flex flex-row items-center justify-between">
-              <span>{{ idx + 1 }} - {{ character.name }}</span>
-              <span
-                [ngClass]="{ 'badge-error': character.power >= 9000 }"
-                class="badge badge-ghost badge-outline"
-                >{{ character.power }}</span
-              >
-            </li>
-          }
-        </ul>
-      </div>
-    </section>
+    <app-card title="List" description="Total characters: {{ characters().length }}">
+      <app-character-list [characters]="characters()" />
+    </app-card>
   </div>
 </section>

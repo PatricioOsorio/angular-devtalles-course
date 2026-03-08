@@ -1,11 +1,9 @@
-import { NgClass } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
-export interface ICharacter {
-  id: number;
-  name: string;
-  power: number;
-}
+import { AppCard } from '@app/components/ui/card/card';
+import { ICharacter } from '@app/interfaces/character';
+import { CharacterList } from '@app/components/character-list/character-list';
+import { CharacterForm } from '@app/components/character-form/character-form';
 
 const INITIAL_CHARACTERS: ICharacter[] = [
   { id: 1, name: 'Goku', power: 9000 },
@@ -17,27 +15,38 @@ const INITIAL_CHARACTERS: ICharacter[] = [
 
 @Component({
   selector: 'app-dragonball-page',
-  imports: [NgClass],
+  imports: [AppCard, CharacterList, CharacterForm],
   templateUrl: './dragonball-page.html',
 })
 export class DragonballPage {
   readonly characters = signal<ICharacter[]>(INITIAL_CHARACTERS);
 
-  readonly name = signal('gohan');
-  readonly power = signal(1000);
+  readonly name = signal('');
+  readonly power = signal(0);
 
   handleInputName($event: Event) {
     this.name.set(($event.target as HTMLInputElement).value);
   }
 
   handleInputPower($event: Event) {
-    this.power.set(Number(($event.target as HTMLInputElement).value));
+    this.power.set(+($event.target as HTMLInputElement).value);
+  }
+
+  handleReset() {
+    this.name.set('');
+    this.power.set(0);
   }
 
   handleAddCharacter() {
+    const isValid = this.name() && this.power() && this.power() > 0;
+
+    if (!isValid) return;
+
     this.characters.update((c) => [
       ...c,
       { id: +new Date(), name: this.name(), power: this.power() },
     ]);
+
+    this.handleReset();
   }
 }

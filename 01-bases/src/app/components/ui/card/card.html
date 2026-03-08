@@ -1,0 +1,34 @@
+<div [class]="cardClasses()">
+  @if (imageUrl()) {
+    <figure>
+      <img [src]="imageUrl()!" [alt]="imageAlt()" />
+    </figure>
+  }
+
+  <ng-content select="[card-media]"></ng-content>
+
+  <div [class]="bodyClasses()">
+    @if (title() || description()) {
+      <div>
+        @if (title()) {
+          <h2 class="card-title">
+            {{ title() }}
+            <ng-content select="[card-badge]"></ng-content>
+          </h2>
+        }
+
+        @if (description()) {
+          <p>{{ description() }}</p>
+        }
+      </div>
+    }
+
+    <ng-content></ng-content>
+
+    <ng-content select="[card-footer]"></ng-content>
+
+    <div class="card-actions justify-end">
+      <ng-content select="[card-actions]"></ng-content>
+    </div>
+  </div>
+</div>
