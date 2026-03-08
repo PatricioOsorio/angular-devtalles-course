@@ -5,9 +5,9 @@ const INITIAL_VALUE = 10;
 @Component({
   selector: 'app-counter',
   imports: [],
-  templateUrl: './counter.html',
+  templateUrl: './counter-page.html',
 })
-export class Counter {
+export class CounterPage {
   readonly counter = signal(INITIAL_VALUE);
 
   increaseBy(value: number) {

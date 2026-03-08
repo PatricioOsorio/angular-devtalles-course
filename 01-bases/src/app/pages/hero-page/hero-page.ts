@@ -7,9 +7,9 @@ const AGE = 45;
 @Component({
   selector: 'app-hero',
   imports: [UpperCasePipe],
-  templateUrl: './hero.html',
+  templateUrl: './hero-page.html',
 })
-export class Hero {
+export class HeroPage {
   readonly name = signal(NAME);
   readonly age = signal(AGE);
 

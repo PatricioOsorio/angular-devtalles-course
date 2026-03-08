@@ -1,0 +1,56 @@
+<section class="space-y-4">
+  <header class="mb-2">
+    <h1>Dragon Ball</h1>
+    <p class="text-sm opacity-70">Administra guerreros y su poder</p>
+  </header>
+
+  <div class="grid gap-4 md:grid-cols-2">
+    <section class="card border-base-300 bg-base-100 border shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title text-lg">Agregar personaje</h2>
+
+        <label class="form-control w-full">
+          <span class="label-text mb-1 text-sm">Nombre</span>
+          <input class="input input-bordered w-full" type="text" placeholder="Ej: Goku" />
+        </label>
+
+        <label class="form-control w-full">
+          <span class="label-text mb-1 text-sm">Poder</span>
+          <input class="input input-bordered w-full" type="number" placeholder="Ej: 9000" />
+        </label>
+
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary" type="button">Agregar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card border-base-300 bg-base-100 border shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title text-lg">Listado</h2>
+        <p class="text-sm opacity-70">Total de personajes: 3</p>
+
+        <ul class="menu bg-base-100 p-0">
+          <li>
+            <div class="rounded-box flex items-center justify-between">
+              <span>Goku</span>
+              <span class="badge badge-primary badge-outline">9000</span>
+            </div>
+          </li>
+          <li>
+            <div class="rounded-box flex items-center justify-between">
+              <span>Vegeta</span>
+              <span class="badge badge-secondary badge-outline">8500</span>
+            </div>
+          </li>
+          <li>
+            <div class="rounded-box flex items-center justify-between">
+              <span>Gohan</span>
+              <span class="badge badge-accent badge-outline">7000</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</section>
