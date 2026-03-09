@@ -1,34 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { LayoutPanelTop, LucideAngularModule, LucideIconNode } from 'lucide-angular';
+import { RouterOutlet } from '@angular/router';
+import { LucideAngularModule } from 'lucide-angular';
 
-interface IMenuItem {
-  label: string;
-  description: string;
-  icon: readonly LucideIconNode[];
-  path: string;
-}
+import { GifsSideMenu } from '@app/gifs/components/gifs-side-menu/gifs-side-menu';
 
 @Component({
   selector: 'app-dashboard-page',
-  imports: [RouterOutlet, LucideAngularModule, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, LucideAngularModule, GifsSideMenu],
   templateUrl: './dashboard-page.html',
 })
-export default class DashboardPage {
-  readonly LayoutPanelTop = LayoutPanelTop;
-
-  readonly menuItems: IMenuItem[] = [
-    {
-      label: 'Trending',
-      description: 'See the trending gifs',
-      icon: LayoutPanelTop,
-      path: '/dashboard/trending',
-    },
-    {
-      label: 'Search',
-      description: 'Search for your favorite gifs',
-      icon: LayoutPanelTop,
-      path: '/dashboard/search',
-    },
-  ];
-}
+export default class DashboardPage {}

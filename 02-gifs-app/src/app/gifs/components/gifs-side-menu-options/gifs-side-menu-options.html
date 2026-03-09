@@ -1,0 +1,21 @@
+<nav id="nav" class="w-full px-4 pb-6" aria-label="Navegación principal">
+  <ul class="space-y-2">
+    @for (item of menuOptions(); track $index) {
+      <li>
+        <a
+          [routerLink]="item.path"
+          routerLinkActive="bg-blue-700/40 text-white"
+          class="group inline-flex min-h-11 w-full items-center gap-3 rounded-lg border border-transparent px-3 py-3 transition-colors duration-200 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+        >
+          <span aria-hidden="true" class="text-slate-100">
+            <lucide-icon [img]="item.icon"></lucide-icon>
+          </span>
+          <span class="flex flex-col text-left">
+            <span class="text-base leading-5 font-semibold">{{ item.label }}</span>
+            <span class="text-xs text-blue-100/80">{{ item.description }}</span>
+          </span>
+        </a>
+      </li>
+    }
+  </ul>
+</nav>
