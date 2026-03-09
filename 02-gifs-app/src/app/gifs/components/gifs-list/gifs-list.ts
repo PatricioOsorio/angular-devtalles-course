@@ -1,6 +1,7 @@
 import { Component, input } from '@angular/core';
-import { IGif } from '@app/gifs/pages/trending-page/trending-page';
+
 import { GifsListItem } from '@app/gifs/components/gifs-list-item/gifs-list-item';
+import { IGif } from '@app/gifs/interfaces/gif.interface';
 
 @Component({
   selector: 'gifs-list',
@@ -8,61 +9,5 @@ import { GifsListItem } from '@app/gifs/components/gifs-list-item/gifs-list-item
   templateUrl: './gifs-list.html',
 })
 export class GifsList {
-  readonly gifs: IGif[] = [
-    {
-      id: 1,
-      title: 'Gifs 1',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg',
-    },
-    {
-      id: 2,
-      title: 'Gifs 2',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg',
-    },
-    {
-      id: 3,
-      title: 'Gifs 3',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg',
-    },
-    {
-      id: 4,
-      title: 'Gifs 4',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg',
-    },
-    {
-      id: 5,
-      title: 'Gifs 5',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg',
-    },
-    {
-      id: 6,
-      title: 'Gifs 6',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg',
-    },
-    {
-      id: 7,
-      title: 'Gifs 7',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg',
-    },
-    {
-      id: 8,
-      title: 'Gifs 8',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg',
-    },
-    {
-      id: 9,
-      title: 'Gifs 9',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg',
-    },
-    {
-      id: 10,
-      title: 'Gifs 10',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg',
-    },
-    {
-      id: 11,
-      title: 'Gifs 11',
-      url: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg',
-    },
-  ];
+  readonly gifs = input.required<IGif[]>();
 }

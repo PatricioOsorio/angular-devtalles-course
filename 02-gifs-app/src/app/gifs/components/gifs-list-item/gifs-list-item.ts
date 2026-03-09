@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
-import { IGif } from '@app/gifs/pages/trending-page/trending-page';
+
+import { IGif } from '@app/gifs/interfaces/gif.interface';
 
 @Component({
   selector: 'gifs-list-item',
