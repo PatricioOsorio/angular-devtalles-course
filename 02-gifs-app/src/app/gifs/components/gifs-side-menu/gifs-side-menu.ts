@@ -6,7 +6,7 @@ import { GifsSideMenuOptions } from '@app/gifs/components/gifs-side-menu-options
 import { IMenuItem } from '@app/gifs/interfaces/menu.interface';
 
 @Component({
-  selector: 'app-gifs-side-menu',
+  selector: 'gifs-side-menu',
   imports: [GifsSideMenuHeader, GifsSideMenuOptions, LucideAngularModule],
   templateUrl: './gifs-side-menu.html',
 })

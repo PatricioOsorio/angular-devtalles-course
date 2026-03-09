@@ -5,7 +5,7 @@ import { LucideAngularModule } from 'lucide-angular';
 import { IMenuItem } from '@app/gifs/interfaces/menu.interface';
 
 @Component({
-  selector: 'app-gifs-side-menu-options',
+  selector: 'gifs-side-menu-options',
   imports: [RouterLink, LucideAngularModule, RouterLinkActive],
   templateUrl: './gifs-side-menu-options.html',
 })
