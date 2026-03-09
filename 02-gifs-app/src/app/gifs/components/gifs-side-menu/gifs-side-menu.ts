@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LayoutPanelTop, LucideAngularModule } from 'lucide-angular';
+import { Search, TrendingUp, LucideAngularModule } from 'lucide-angular';
 
 import { GifsSideMenuHeader } from '@app/gifs/components/gifs-side-menu-header/gifs-side-menu-header';
 import { GifsSideMenuOptions } from '@app/gifs/components/gifs-side-menu-options/gifs-side-menu-options';
@@ -11,19 +11,20 @@ import { IMenuItem } from '@app/gifs/interfaces/menu.interface';
   templateUrl: './gifs-side-menu.html',
 })
 export class GifsSideMenu {
-  readonly LayoutPanelTop = LayoutPanelTop;
+  readonly Search = Search;
+  readonly TrendingUp = TrendingUp;
 
   readonly menuItems: IMenuItem[] = [
     {
       label: 'Trending',
       description: 'See the trending gifs',
-      icon: LayoutPanelTop,
+      icon: TrendingUp,
       path: '/dashboard/trending',
     },
     {
       label: 'Search',
       description: 'Search for your favorite gifs',
-      icon: LayoutPanelTop,
+      icon: Search,
       path: '/dashboard/search',
     },
   ];
