@@ -11,11 +11,19 @@ const INITIAL_CHARACTERS: ICharacter[] = [
   { id: 5, name: 'Krillin', power: 5000 },
 ];
 
+function loadFromLocalStorage(): ICharacter[] {
+  const characters = localStorage.getItem(LOCAL_STORAGE_KEYS.DRAGONBALL_CHARACTERS);
+
+  if (!characters) return INITIAL_CHARACTERS;
+
+  return JSON.parse(characters);
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class DragonballService {
-  readonly characters = signal<ICharacter[]>(INITIAL_CHARACTERS);
+  readonly characters = signal<ICharacter[]>(loadFromLocalStorage());
 
   saveToLocalStorage = effect(() => {
     localStorage.setItem(

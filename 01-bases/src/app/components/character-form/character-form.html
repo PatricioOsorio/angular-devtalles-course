@@ -1,25 +1,27 @@
-<label class="form-control w-full">
-  <span class="label-text mb-1 text-sm">Nombre</span>
-  <input
-    (input)="onNameInput($event)"
-    [value]="name()"
-    class="input input-bordered w-full"
-    type="text"
-    placeholder="Ej: Goku"
-  />
-</label>
+<section class="flex flex-col gap-4">
+  <label class="form-control w-full">
+    <span class="label-text mb-1 text-sm">Nombre</span>
+    <input
+      (input)="onNameInput($event)"
+      [value]="name()"
+      class="input input-bordered w-full"
+      type="text"
+      placeholder="Ej: Goku"
+    />
+  </label>
 
-<label class="form-control w-full">
-  <span class="label-text mb-1 text-sm">Poder</span>
-  <input
-    (input)="onPowerInput($event)"
-    [value]="power()"
-    class="input input-bordered w-full"
-    type="number"
-    placeholder="Ej: 9000"
-  />
-</label>
+  <label class="form-control w-full">
+    <span class="label-text mb-1 text-sm">Poder</span>
+    <input
+      (input)="onPowerInput($event)"
+      [value]="power()"
+      class="input input-bordered w-full"
+      type="number"
+      placeholder="Ej: 9000"
+    />
+  </label>
 
-<div class="card-actions justify-end">
-  <button (click)="addCharacter()" class="btn btn-primary" type="button">Agregar</button>
-</div>
+  <div class="card-actions justify-end">
+    <button (click)="addCharacter()" class="btn btn-primary" type="button">Agregar</button>
+  </div>
+</section>
