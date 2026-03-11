@@ -6,7 +6,7 @@ export class GifMapper {
     return {
       id: giphyGif.id,
       title: giphyGif.title,
-      url: giphyGif.url,
+      url: giphyGif.images.fixed_width.url,
     };
   }
 

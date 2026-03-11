@@ -1,4 +1,6 @@
 import { Component, inject } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { injectQuery } from '@tanstack/angular-query-experimental';
 
 import { GifsList } from '@app/gifs/components/gifs-list/gifs-list';
 import { IGif } from '@app/gifs/interfaces/gif.interface';
@@ -71,4 +73,10 @@ export default class TrendingPage {
   readonly gifs: IGif[] = GIFS;
 
   readonly gifsService = inject(GifsService);
+
+  readonly gifsQuery = injectQuery(() => ({
+    queryKey: ['trending-gifs'],
+    queryFn: () => firstValueFrom(this.gifsService.getTrendingGifs()),
+  }));
+
 }

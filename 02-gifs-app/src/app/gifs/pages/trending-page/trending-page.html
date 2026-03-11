@@ -1,3 +1,5 @@
-<div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-  <gifs-list class="contents" [gifs]="gifs" />
-</div>
+@if (gifsQuery.data(); as gifs) {
+  <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+    <gifs-list [gifs]="gifs" class="contents" />
+  </div>
+}
