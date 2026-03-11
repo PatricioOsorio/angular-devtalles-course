@@ -1,1 +1,64 @@
-<p>search-page works!</p>
+<div class="page">
+  <section
+    class="border-primary/20 from-base-200 via-base-100 to-base-200 relative overflow-hidden rounded-3xl border bg-gradient-to-br p-6 shadow-xl md:p-10"
+  >
+    <div
+      class="bg-primary/20 pointer-events-none absolute -top-16 -right-16 h-44 w-44 rounded-full blur-3xl"
+    ></div>
+    <div
+      class="bg-secondary/20 pointer-events-none absolute -bottom-16 -left-16 h-44 w-44 rounded-full blur-3xl"
+    ></div>
+
+    <div class="relative space-y-4">
+      <div class="flex flex-wrap gap-2">
+        <span class="badge badge-primary badge-outline">GIF Search</span>
+        <span class="badge badge-accent badge-outline">Instant Results</span>
+      </div>
+
+      <h2 class="text-3xl font-black tracking-tight md:text-5xl">Encuentra el GIF perfecto</h2>
+      <p class="text-base-content/70 max-w-2xl md:text-lg">
+        Busca por emociones, categorías o tendencias. Escribe y explora resultados al instante.
+      </p>
+    </div>
+  </section>
+
+  <section class="card border-base-300 bg-base-100 border shadow-lg">
+    <div class="card-body gap-4">
+      <div class="flex items-center justify-between">
+        <h3 class="card-title text-xl md:text-2xl">Buscar</h3>
+        <kbd class="kbd kbd-sm">Enter</kbd>
+      </div>
+
+      <div class="join w-full">
+        <label
+          class="input input-bordered input-lg join-item focus-within:border-primary flex w-full items-center gap-2"
+        >
+          <input
+            (keydown.enter)="onSearch(searchInput.value)"
+            #searchInput
+            type="text"
+            class="grow"
+            placeholder="Ej: cats, reactions, anime..."
+            aria-label="Buscar gifs"
+          />
+        </label>
+
+        <button (click)="onSearch(searchInput.value)" class="btn btn-primary btn-lg join-item">
+          Buscar
+        </button>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-base-content/60 text-sm">Sugerencias:</span>
+        <button (click)="onSearch('cats')" class="btn btn-xs btn-outline">cats</button>
+        <button (click)="onSearch('memes')" class="btn btn-xs btn-outline">memes</button>
+        <button (click)="onSearch('reactions')" class="btn btn-xs btn-outline">reactions</button>
+        <button (click)="onSearch('funny')" class="btn btn-xs btn-outline">funny</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <gifs-list [gifs]="searchQuery.data()" [isLoading]="searchQuery.isLoading()" />
+  </section>
+</div>

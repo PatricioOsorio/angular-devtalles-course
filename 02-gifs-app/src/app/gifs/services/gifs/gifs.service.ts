@@ -24,4 +24,17 @@ export class GifsService {
       })
       .pipe(map((response) => GifMapper.toGifs(response.data)));
   }
+
+  searchGifs(query: string): Observable<IGif[]> {
+    return this.http
+      .get<IGiphyResponse>(`${environment.giphyApiUrl}/gifs/search`, {
+        params: {
+          api_key: environment.giphyApiKey,
+          q: query,
+          limit: 25,
+          rating: 'g',
+        },
+      })
+      .pipe(map((response) => GifMapper.toGifs(response.data)));
+  }
 }

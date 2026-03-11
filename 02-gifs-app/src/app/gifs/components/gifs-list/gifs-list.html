@@ -1,3 +1,59 @@
-@for (gif of gifs(); track gif.id) {
-  <gifs-list-item [gif]="gif" class="contents" />
+@switch (viewState()) {
+  @case ('loading') {
+    <loading />
+  }
+
+  @case ('empty') {
+    <div class="border-base-300 bg-base-200/50 rounded-3xl border border-dashed p-10 text-center">
+      <p class="text-base-content/70">No hay resultados para esta búsqueda.</p>
+    </div>
+  }
+
+  @case ('data') {
+    @let items = gifs()!;
+
+    <div class="mb-3 flex items-center gap-2">
+      <span class="badge badge-primary badge-lg">{{ items.length }}</span>
+      <span class="text-base-content/70 text-sm">
+        {{ items.length === 1 ? 'gif encontrado' : 'gifs encontrados' }}
+      </span>
+    </div>
+
+    <div class="border-base-300 bg-base-100 rounded-3xl border p-3 shadow-sm md:p-5">
+      <div [class]="rootClass()">
+        @for (gif of items; track gif.id) {
+          <gifs-list-item [gif]="gif" class="contents" />
+        }
+      </div>
+    </div>
+  }
 }
+
+<!-- @if (viewState() === 'loading') {
+  <p>loading...</p>
+}
+
+@if (viewState() === 'empty') {
+  <div class="border-base-300 bg-base-200/50 rounded-3xl border border-dashed p-10 text-center">
+    <p class="text-base-content/70">No hay resultados para esta búsqueda.</p>
+  </div>
+}
+
+@if (viewState() === 'data') {
+  @let items = gifs()!;
+
+  <div class="mb-3 flex items-center gap-2">
+    <span class="badge badge-primary badge-lg">{{ items.length }}</span>
+    <span class="text-base-content/70 text-sm">
+      {{ items.length === 1 ? 'gif encontrado' : 'gifs encontrados' }}
+    </span>
+  </div>
+
+  <div class="border-base-300 bg-base-100 rounded-3xl border p-3 shadow-sm md:p-5">
+    <div [class]="rootClass()">
+      @for (gif of items; track gif.id) {
+        <gifs-list-item [gif]="gif" class="contents" />
+      }
+    </div>
+  </div>
+} -->
