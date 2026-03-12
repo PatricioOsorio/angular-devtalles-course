@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { map, Observable, tap } from 'rxjs';
 
 import { environment } from '@environments/environment';
 import type { IGiphyResponse } from '@app/gifs/interfaces/giphy.response';
@@ -12,6 +12,8 @@ import { GifMapper } from '@app/gifs/mapper/gif.mapper';
 })
 export class GifsService {
   readonly http = inject(HttpClient);
+
+  readonly searchHistory = signal<string[]>([]);
 
   getTrendingGifs(): Observable<IGif[]> {
     return this.http
@@ -38,6 +40,14 @@ export class GifsService {
       .pipe(
         map(({ data }) => GifMapper.toGifs(data)),
         // TODO: Add history
+        tap(() => {
+          const normalized = query.trim().toLowerCase();
+          if (!normalized) return;
+
+          this.searchHistory.update((history) =>
+            [normalized, ...history.filter((item) => item !== normalized)].slice(0, 10),
+          );
+        }),
       );
   }
 }

@@ -11,4 +11,5 @@ import { IMenuItem } from '@app/gifs/interfaces/menu.interface';
 })
 export class GifsSideMenuOptions {
   readonly menuOptions = input.required<IMenuItem[]>();
+
 }

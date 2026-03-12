@@ -5,4 +5,8 @@
 >
   <gifs-side-menu-header />
   <gifs-side-menu-options [menuOptions]="menuItems" />
+
+  @if (searchHistory().length > 0) {
+    <gifs-side-menu-options [menuOptions]="searchHistory()" />
+  }
 </aside>

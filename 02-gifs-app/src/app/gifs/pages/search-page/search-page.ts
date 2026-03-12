@@ -22,6 +22,7 @@ export default class SearchPage {
   }));
 
   onSearch(query: string) {
+    if (!query.trim()) return;
     this.searchTerm.set(query);
   }
 }
