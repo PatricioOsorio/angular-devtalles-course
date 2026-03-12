@@ -1,5 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
-import { Search, TrendingUp, LucideAngularModule } from 'lucide-angular';
+import { Search, TrendingUp, LucideAngularModule, History } from 'lucide-angular';
 
 import { GifsSideMenuHeader } from '@app/gifs/components/gifs-side-menu-header/gifs-side-menu-header';
 import { GifsSideMenuOptions } from '@app/gifs/components/gifs-side-menu-options/gifs-side-menu-options';
@@ -16,6 +16,7 @@ export class GifsSideMenu {
 
   readonly IconSearch = Search;
   readonly IconTrendingUp = TrendingUp;
+  readonly IconHistory = History;
 
   readonly menuItems: IMenuItem[] = [
     {
@@ -36,8 +37,8 @@ export class GifsSideMenu {
     this.gifsService.searchHistory()?.map((query) => ({
       label: query,
       description: `Search for ${query}`,
-      icon: this.IconSearch,
-      path: `/dashboard/search?q=${query}`,
+      icon: this.IconHistory,
+      path: `/dashboard/history/${query}`,
     })),
   );
 }
