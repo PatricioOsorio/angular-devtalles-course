@@ -35,6 +35,9 @@ export class GifsService {
           rating: 'g',
         },
       })
-      .pipe(map((response) => GifMapper.toGifs(response.data)));
+      .pipe(
+        map(({ data }) => GifMapper.toGifs(data)),
+        // TODO: Add history
+      );
   }
 }

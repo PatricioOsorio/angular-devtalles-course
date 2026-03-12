@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
 import { queryKeys } from '@app/core/query/query-keys';
@@ -14,12 +14,14 @@ import { injectQuery } from '@tanstack/angular-query-experimental';
 export default class SearchPage {
   readonly gifsService = inject(GifsService);
 
+  readonly searchTerm = signal('');
+
   readonly searchQuery = injectQuery(() => ({
-    queryKey: queryKeys.gifs.search('javascript'),
-    queryFn: () => firstValueFrom(this.gifsService.searchGifs('javascript')),
+    queryKey: queryKeys.gifs.search(this.searchTerm()),
+    queryFn: () => firstValueFrom(this.gifsService.searchGifs(this.searchTerm())),
   }));
 
   onSearch(query: string) {
-    console.log({ query });
+    this.searchTerm.set(query);
   }
 }
