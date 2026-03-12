@@ -1,6 +1,8 @@
 export const queryKeys = {
   gifs: {
-    trending: () => ['trending'] as const,
-    search: (query: string) => ['search', query] as const,
+    trending: () => ['no-persist', 'gifs', 'trending'] as const,
+
+    searches: () => ['persist', 'gifs', 'search'] as const,
+    search: (query: string) => ['persist', 'gifs', 'search', query] as const,
   },
 } as const;

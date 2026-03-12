@@ -33,12 +33,15 @@ export class GifsSideMenu {
     },
   ];
 
-  readonly searchHistory = computed<IMenuItem[]>(() =>
-    this.gifsService.searchHistory()?.map((query) => ({
-      label: query,
-      description: `Search for ${query}`,
-      icon: this.IconHistory,
-      path: `/dashboard/history/${query}`,
-    })),
-  );
+  readonly searchHistory = computed(() => {
+    return this.gifsService
+      .searchHistory()
+      .filter((query): query is string => !!query)
+      .map((query) => ({
+        label: query,
+        description: `Search for ${query}`,
+        icon: this.IconHistory,
+        path: `/dashboard/history/${query}`,
+      }));
+  });
 }

@@ -18,6 +18,8 @@
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
     "@tanstack/angular-query-experimental": "^5.90.25",
+    "@tanstack/query-async-storage-persister": "^5.90.24",
+    "@tanstack/query-persist-client-core": "^5.92.1",
     "clsx": "^2.1.1",
     "rxjs": "~7.8.0",
     "tailwind-merge": "^3.5.0",
