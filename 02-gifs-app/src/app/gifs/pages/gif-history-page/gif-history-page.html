@@ -58,7 +58,11 @@
             </div>
           </div>
 
-          <gifs-list [gifs]="searchQuery.data()" [isLoading]="searchQuery.isLoading()" />
+          <gifs-list
+            [gifs]="searchQuery.data()"
+            [isLoading]="searchQuery.isLoading()"
+            [scrollKey]="'gifs:history' + query()"
+          />
         </div>
       </section>
     }

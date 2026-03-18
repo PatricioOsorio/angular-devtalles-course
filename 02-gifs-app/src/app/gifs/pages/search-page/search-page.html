@@ -35,12 +35,12 @@
         >
           <input
             (keydown.enter)="onSearch(searchInput.value)"
+            [value]="searchTerm()"
             #searchInput
             type="text"
             class="grow"
             placeholder="Ej: cats, reactions, anime..."
             aria-label="Buscar gifs"
-            [value]="searchTerm()"
           />
         </label>
 
@@ -60,6 +60,10 @@
   </section>
 
   <section class="space-y-4">
-    <gifs-list [gifs]="searchQuery.data()" [isLoading]="searchQuery.isLoading()" />
+    <gifs-list
+      [gifs]="searchQuery.data()"
+      [isLoading]="searchQuery.isLoading()"
+      [scrollKey]="'gifs:search' + searchTerm()"
+    />
   </section>
 </div>
