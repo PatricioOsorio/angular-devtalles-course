@@ -14,7 +14,7 @@ type IViewState = 'loading' | 'empty' | 'data';
 export class GifsList {
   readonly gifs = input<IGif[] | null>();
   readonly isLoading = input<boolean>(false);
-  readonly scrollDivRef = viewChild<ElementRef>('groupDiv');
+  readonly scrollDivRef = viewChild<ElementRef<HTMLDivElement>>('groupDiv');
 
   readonly viewState = computed<IViewState>(() => {
     if (this.isLoading()) return 'loading';
@@ -24,6 +24,14 @@ export class GifsList {
 
   onScroll(e: Event) {
     const scrollDiv = this.scrollDivRef()?.nativeElement;
-    console.log({scrollDiv});
+
+    if (!scrollDiv) return;
+
+    const { scrollTop, scrollHeight, clientHeight } = scrollDiv;
+
+    const isAtBottom = scrollTop + clientHeight + 300 >= scrollHeight;
+
+    console.log({ scrollTop, scrollHeight, clientHeight, isAtBottom });
+
   }
 }
