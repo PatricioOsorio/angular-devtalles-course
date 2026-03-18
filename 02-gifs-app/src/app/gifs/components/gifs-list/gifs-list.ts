@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, input, viewChild } from '@angular/core';
+import { Component, computed, ElementRef, input, output, viewChild } from '@angular/core';
 
 import { GifsListItem } from '@app/gifs/components/gifs-list-item/gifs-list-item';
 import { IGif } from '@app/gifs/interfaces/gif.interface';
@@ -14,7 +14,9 @@ type IViewState = 'loading' | 'empty' | 'data';
 export class GifsList {
   readonly gifs = input<IGif[] | null>();
   readonly isLoading = input<boolean>(false);
+  readonly isLoadingMore = input<boolean>(false);
   readonly scrollDivRef = viewChild<ElementRef<HTMLDivElement>>('groupDiv');
+  readonly reachedBottom = output();
 
   readonly viewState = computed<IViewState>(() => {
     if (this.isLoading()) return 'loading';
@@ -31,7 +33,8 @@ export class GifsList {
 
     const isAtBottom = scrollTop + clientHeight + 300 >= scrollHeight;
 
-    console.log({ scrollTop, scrollHeight, clientHeight, isAtBottom });
+    if (!isAtBottom) return;
 
+    this.reachedBottom.emit();
   }
 }

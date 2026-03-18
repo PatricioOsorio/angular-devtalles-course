@@ -1,1 +1,6 @@
-<gifs-list [gifs]="gifsQuery.data()" [isLoading]="gifsQuery.isLoading()" />
+<gifs-list
+  (reachedBottom)="loadMore()"
+  [gifs]="gifs()"
+  [isLoading]="gifsInfinity.isLoading()"
+  [isLoadingMore]="gifsInfinity.isFetchingNextPage()"
+/>
