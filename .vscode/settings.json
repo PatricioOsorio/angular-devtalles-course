@@ -4,5 +4,6 @@
       "externalTemplate": true,
       "skipStyle": true
     }
-  }
+  },
+  "css.customData": [".vscode/tailwind.json"]
 }
