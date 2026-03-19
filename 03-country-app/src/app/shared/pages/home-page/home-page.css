@@ -1,0 +1,76 @@
+@reference 'tailwindcss';
+@plugin 'daisyui';
+
+@layer components {
+  .home-page {
+    @apply hero rounded-box border-base-300/40 relative isolate h-full overflow-hidden border;
+  }
+
+  .hp__background {
+    @apply absolute inset-0 bg-cover bg-center blur-sm;
+  }
+
+  .hp__overlay {
+    @apply hero-overlay from-neutral/90 via-neutral/70 to-primary/40 bg-gradient-to-br;
+  }
+
+  .hp__glow {
+    @apply pointer-events-none absolute rounded-full blur-3xl;
+  }
+
+  .hp__glow--left {
+    @apply bg-accent/20 top-16 -left-20 h-72 w-72;
+  }
+
+  .hp__glow--right {
+    @apply bg-primary/25 -right-16 bottom-10 h-80 w-80;
+  }
+
+  .hp__content {
+    @apply hero-content relative z-10 w-full py-14 sm:py-20;
+  }
+
+  .hp__grid {
+    @apply grid w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.2fr_0.8fr];
+  }
+
+  .hp__main {
+    @apply space-y-6 text-center lg:text-left;
+  }
+
+  .hp__badge {
+    @apply badge badge-accent badge-lg border-0 font-semibold tracking-[0.24em] uppercase;
+  }
+
+  .hp__title {
+    @apply text-neutral-content text-4xl leading-[1.05] font-black sm:text-5xl lg:text-6xl;
+  }
+
+  .hp__title-highlight {
+    @apply text-accent block;
+  }
+
+  .hp__description {
+    @apply text-neutral-content/90 mx-auto max-w-2xl text-base/relaxed sm:text-lg/relaxed lg:mx-0;
+  }
+
+  .hp__button {
+    @apply btn btn-accent btn-lg text-accent-content w-full px-10 shadow-xl transition duration-300 hover:-translate-y-0.5 hover:shadow-2xl sm:w-auto;
+  }
+
+  .hp__aside {
+    @apply bg-base-100/10 text-neutral-content rounded-3xl border border-white/20 p-6 backdrop-blur-md sm:p-8;
+  }
+
+  .hp__aside-title {
+    @apply text-neutral-content/70 text-sm tracking-[0.2em] uppercase;
+  }
+
+  .hp__aside-subtitle {
+    @apply mt-3 text-2xl font-bold sm:text-3xl;
+  }
+
+  .hp__aside-text {
+    @apply text-neutral-content/85 mt-4;
+  }
+}
