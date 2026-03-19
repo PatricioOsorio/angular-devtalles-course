@@ -8,9 +8,9 @@ type TopMenuItem = {
 };
 
 @Component({
-  selector: 'app-top-menu',
+  selector: 'country-top-menu',
   imports: [RouterLink, RouterLinkActive],
-  templateUrl: './top-menu.html',
+  templateUrl: './country-top-menu.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopMenu {

@@ -1,0 +1,49 @@
+<div class="rounded-box border-base-content/10 bg-base-100 overflow-x-auto border">
+  <table [class]="tableClass()">
+    @if (caption()) {
+      <caption class="text-base-content/70 caption-top px-4 pt-4 text-left text-sm">
+        {{
+          caption()
+        }}
+      </caption>
+    }
+
+    <thead>
+      <tr>
+        @for (col of columns(); track col.key) {
+          <th
+            [class]="col.headerClass ?? ''"
+            [class.text-center]="isAlignCenter(col)"
+            [class.text-right]="isAlignRight(col)"
+          >
+            {{ col.header }}
+          </th>
+        }
+      </tr>
+    </thead>
+
+    <tbody>
+      @if (rows().length === 0) {
+        <tr>
+          <td [attr.colspan]="columns().length || 1" class="text-base-content/60 py-10 text-center">
+            {{ emptyMessage() }}
+          </td>
+        </tr>
+      } @else {
+        @for (row of rows(); track rowTrackBy()(row, $index); let rowIndex = $index) {
+          <tr>
+            @for (col of columns(); track col.key) {
+              <td
+                [class]="col.cellClass ?? ''"
+                [class.text-center]="isAlignCenter(col)"
+                [class.text-right]="isAlignRight(col)"
+              >
+                {{ getCellValue(row, col, rowIndex) }}
+              </td>
+            }
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>

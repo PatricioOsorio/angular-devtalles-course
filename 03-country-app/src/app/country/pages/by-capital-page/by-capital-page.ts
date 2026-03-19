@@ -1,9 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+
+import { CountryTable, ICountryRow } from '@app/country/components/country-table/country-table';
+import { CountrySearchInput } from "@app/country/components/country-search-input/country-search-input";
 
 @Component({
-  selector: 'app-by-capital-page',
-  imports: [],
+  selector: 'by-capital-page',
+  imports: [CountryTable, CountrySearchInput],
   templateUrl: './by-capital-page.html',
-  styles: ``,
 })
-export default class ByCapitalPage {}
+export default class ByCapitalPage {
+  readonly results = signal<readonly ICountryRow[]>([]);
+
+  onSearch(value: string) {
+    console.log(value);
+  }
+}

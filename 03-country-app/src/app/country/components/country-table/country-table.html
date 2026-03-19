@@ -1,0 +1,13 @@
+<section
+  class="border-base-300/50 bg-base-200/30 relative isolate overflow-hidden rounded-3xl border p-5 sm:p-8"
+>
+  <app-table
+    [columns]="columns"
+    [rows]="rows()"
+    [zebra]="true"
+    [pinRows]="true"
+    [size]="'sm'"
+    caption="Resultados de busqueda"
+    emptyMessage="No se encontraron paises"
+  ></app-table>
+</section>

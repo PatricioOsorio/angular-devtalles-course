@@ -1,0 +1,62 @@
+<section
+  class="border-base-300/50 bg-base-200/30 relative isolate overflow-hidden rounded-3xl border p-5 sm:p-8"
+>
+  <div
+    class="bg-primary/20 pointer-events-none absolute top-0 -left-20 h-56 w-56 rounded-full blur-3xl"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="bg-accent/20 pointer-events-none absolute -right-20 bottom-0 h-64 w-64 rounded-full blur-3xl"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative z-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
+    <div class="space-y-5">
+      <span class="badge badge-accent border-0 font-semibold tracking-[0.2em] uppercase"
+        >Busqueda</span
+      >
+
+      <h2 class="text-base-content text-3xl leading-tight font-black sm:text-4xl">
+        Encuentra paises por su
+        <span class="text-primary block">capital</span>
+      </h2>
+
+      <p class="text-base-content/80 max-w-2xl text-sm sm:text-base">
+        Escribe el nombre de una capital para obtener resultados mas precisos, de forma rapida y sin
+        friccion.
+      </p>
+
+      <label class="form-control w-full" aria-label="Busqueda por capital">
+        <div class="label pb-2">
+          <span class="label-text font-medium">Capital</span>
+        </div>
+        <div class="join w-full">
+          <input
+            (keyup.enter)="onSearch(inputSearch.value)"
+            #inputSearch
+            type="search"
+            placeholder="Ej: Santiago, Bogota, Madrid"
+            class="input input-bordered join-item w-full"
+            aria-label="Ingresa una capital"
+          />
+          <button
+            (click)="onSearch(inputSearch.value)"
+            type="button"
+            class="btn btn-primary join-item"
+          >
+            Buscar
+          </button>
+        </div>
+      </label>
+    </div>
+
+    <aside class="border-base-300/60 bg-base-100/80 rounded-2xl border p-5 shadow-sm sm:p-6">
+      <p class="text-base-content/70 text-xs tracking-[0.18em] uppercase">Consejos</p>
+      <ul class="text-base-content/85 mt-4 space-y-3 text-sm sm:text-base">
+        <li>Usa el nombre oficial de la capital para mejores resultados.</li>
+        <li>Prueba variaciones sin tildes si no encuentras coincidencias.</li>
+        <li>Empieza con una sola palabra y luego refina.</li>
+      </ul>
+    </aside>
+  </div>
+</section>
