@@ -1,0 +1,22 @@
+<nav
+  class="rounded-box border border-base-300/70 bg-base-100/80 p-1.5 backdrop-blur"
+  aria-label="Navegacion de la seccion paises"
+>
+  <ul class="menu menu-horizontal menu-sm sm:menu-md rounded-box bg-base-200/70 w-full justify-start gap-1.5 p-1">
+    @for (item of menuItems; track item) {
+      <li>
+        <a
+          [routerLink]="item.routerLink"
+          [attr.aria-label]="item.ariaLabel"
+          [routerLinkActiveOptions]="{ exact: true }"
+          [attr.aria-current]="linkActive.isActive ? 'page' : null"
+          #linkActive="routerLinkActive"
+          routerLinkActive="menu-active bg-primary text-primary-content shadow-sm"
+          class="font-medium whitespace-nowrap"
+        >
+          {{ item.label }}
+        </a>
+      </li>
+    }
+  </ul>
+</nav>
