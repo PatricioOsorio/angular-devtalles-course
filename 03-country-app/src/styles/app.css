@@ -1,12 +1,12 @@
 @import 'tailwindcss';
 
-@plugin 'daisyui' {
+@plugin '@styleguide/core' {
   themes:
-    light --default,
-    dark --prefersdark;
+    light ,
+    night --default;
 }
 
-@import './theme/daisyui-theme.css';
+/* @import './theme/daisyui-theme.css'; */
 
 @import './base/base.css';
 @import './base/typography.css';

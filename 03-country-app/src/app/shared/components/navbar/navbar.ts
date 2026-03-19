@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { changeTheme } from '@styleguide/core/utils';
 
 export type INavItem = {
   label: string;
