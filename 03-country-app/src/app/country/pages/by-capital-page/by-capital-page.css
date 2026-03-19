@@ -1,0 +1,8 @@
+@reference 'tailwindcss';
+@plugin 'daisyui';
+
+@layer components {
+  .by-capital-page {
+    @apply flex w-full flex-col gap-4;
+  }
+}

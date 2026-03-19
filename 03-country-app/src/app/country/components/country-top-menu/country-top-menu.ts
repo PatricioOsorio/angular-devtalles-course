@@ -11,6 +11,7 @@ type TopMenuItem = {
   selector: 'country-top-menu',
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './country-top-menu.html',
+  styleUrl: './country-top-menu.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopMenu {

@@ -1,39 +1,39 @@
-<section class="mt-14 px-4 pb-6 sm:px-6 lg:px-8">
-  <footer class="relative isolate overflow-hidden rounded-box border border-base-300/60 bg-neutral text-neutral-content">
-    <div class="pointer-events-none absolute -left-16 top-0 h-44 w-44 rounded-full bg-primary/35 blur-3xl"></div>
-    <div class="pointer-events-none absolute -right-12 bottom-0 h-52 w-52 rounded-full bg-accent/30 blur-3xl"></div>
+<section class="app-footer">
+  <footer class="af__wrapper">
+    <div class="af__glow af__glow--primary"></div>
+    <div class="af__glow af__glow--accent"></div>
 
-    <div class="footer footer-vertical sm:footer-horizontal relative z-10 gap-10 p-8 md:p-10">
-      <aside class="max-w-sm space-y-4">
-        <span class="badge badge-accent border-0 font-semibold uppercase tracking-[0.2em]">Country App</span>
+    <div class="af__content">
+      <aside class="af__aside">
+        <span class="af__badge">Country App</span>
 
-        <h3 class="text-2xl font-extrabold leading-tight">
+        <h3 class="af__title">
           Explora paises con una experiencia limpia y rapida
         </h3>
 
-        <p class="text-sm leading-relaxed text-neutral-content/80">
+        <p class="af__description">
           Descubre informacion por capital y recorre el mapa global con una interfaz enfocada en
           velocidad, lectura y claridad.
         </p>
 
-        <a routerLink="/country/by-capital" class="btn btn-accent btn-sm w-fit">
+        <a routerLink="/country/by-capital" class="af__button">
           Ir a buscar por capital
         </a>
       </aside>
 
-      <nav>
-        <h6 class="footer-title text-neutral-content">Navegacion</h6>
-        <a routerLink="/" class="link link-hover">Inicio</a>
-        <a routerLink="/country/by-capital" class="link link-hover">Por capital</a>
+      <nav class="af__nav">
+        <h6 class="af__title-nav">Navegacion</h6>
+        <a routerLink="/" class="af__link">Inicio</a>
+        <a routerLink="/country/by-capital" class="af__link">Por capital</a>
       </nav>
 
-      <nav>
-        <h6 class="footer-title text-neutral-content">Recursos</h6>
+      <nav class="af__nav">
+        <h6 class="af__title-nav">Recursos</h6>
         <a
           href="https://restcountries.com/"
           target="_blank"
           rel="noopener noreferrer"
-          class="link link-hover"
+          class="af__link"
         >
           API RestCountries
         </a>
@@ -41,14 +41,14 @@
           href="https://angular.dev/"
           target="_blank"
           rel="noopener noreferrer"
-          class="link link-hover"
+          class="af__link"
         >
           Angular Docs
         </a>
       </nav>
     </div>
 
-    <div class="relative z-10 border-t border-white/10 px-8 py-4 text-xs text-neutral-content/70 md:px-10">
+    <div class="af__bottom-bar">
       © 2026 Country App. Hecho para explorar el mundo capital por capital.
     </div>
   </footer>

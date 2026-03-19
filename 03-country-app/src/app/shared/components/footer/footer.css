@@ -1,0 +1,64 @@
+@reference 'tailwindcss';
+@plugin 'daisyui';
+
+@layer components {
+  .app-footer {
+    @apply mt-14 px-4 pb-6 sm:px-6 lg:px-8;
+  }
+
+  .af__wrapper {
+    @apply relative isolate overflow-hidden rounded-box border border-base-300/60 bg-neutral text-neutral-content;
+  }
+
+  .af__glow {
+    @apply pointer-events-none absolute rounded-full blur-3xl;
+  }
+
+  .af__glow--primary {
+    @apply -left-16 top-0 h-44 w-44 bg-primary/35;
+  }
+
+  .af__glow--accent {
+    @apply -right-12 bottom-0 h-52 w-52 bg-accent/30;
+  }
+
+  .af__content {
+    @apply footer footer-vertical sm:footer-horizontal relative z-10 gap-10 p-8 md:p-10;
+  }
+
+  .af__aside {
+    @apply max-w-sm space-y-4;
+  }
+
+  .af__badge {
+    @apply badge badge-accent border-0 font-semibold uppercase tracking-[0.2em];
+  }
+
+  .af__title {
+    @apply text-2xl font-extrabold leading-tight;
+  }
+
+  .af__description {
+    @apply text-sm leading-relaxed text-neutral-content/80;
+  }
+
+  .af__button {
+    @apply btn btn-accent btn-sm w-fit;
+  }
+
+  .af__nav {
+    
+  }
+
+  .af__title-nav {
+    @apply footer-title text-neutral-content;
+  }
+
+  .af__link {
+    @apply link link-hover;
+  }
+
+  .af__bottom-bar {
+    @apply relative z-10 border-t border-white/10 px-8 py-4 text-xs text-neutral-content/70 md:px-10;
+  }
+}

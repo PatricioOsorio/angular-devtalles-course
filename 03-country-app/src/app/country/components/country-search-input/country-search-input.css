@@ -1,0 +1,86 @@
+@reference 'tailwindcss';
+@plugin 'daisyui';
+
+@layer components {
+  /* Bloque Principal */
+  .country-search {
+    @apply border-base-300/50 bg-base-200/30 relative isolate overflow-hidden rounded-3xl border p-5 sm:p-8;
+
+    /* Elementos de Brillo (Glow) */
+    .cs__glow {
+      @apply pointer-events-none absolute rounded-full blur-3xl;
+    }
+
+    .cs__glow--primary {
+      @apply bg-primary/20 top-0 -left-20 h-56 w-56;
+    }
+
+    .cs__glow--accent {
+      @apply bg-accent/20 -right-20 bottom-0 h-64 w-64;
+    }
+
+    /* Contenedor y Estructura */
+    .cs__container {
+      @apply relative z-10 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8;
+    }
+
+    .cs__header {
+      @apply space-y-5;
+    }
+
+    .cs__badge {
+      @apply badge badge-accent border-0 font-semibold tracking-[0.2em] uppercase;
+    }
+
+    /* Tipografía */
+    .cs__title {
+      @apply text-base-content text-3xl leading-tight font-black sm:text-4xl;
+    }
+
+    .cs__title-highlight {
+      @apply text-primary block;
+    }
+
+    .cs__description {
+      @apply text-base-content/80 max-w-2xl text-sm sm:text-base;
+    }
+
+    /* Formulario e Inputs */
+    .cs__form {
+      @apply fieldset w-full;
+    }
+
+    .cs__label {
+      @apply fieldset-legend pb-2;
+    }
+
+    .cs__label-text {
+      @apply font-medium;
+    }
+
+    .cs__input-group {
+      @apply join w-full;
+    }
+
+    .cs__input {
+      @apply input join-item w-full;
+    }
+
+    .cs__button {
+      @apply btn btn-primary join-item;
+    }
+
+    /* Sección de Tips/Sugerencias */
+    .cs__tips {
+      @apply border-base-300/60 bg-base-100/80 rounded-2xl border p-5 shadow-sm sm:p-6;
+    }
+
+    .cs__tips-title {
+      @apply text-base-content/70 text-xs tracking-[0.18em] uppercase;
+    }
+
+    .cs__tips-list {
+      @apply text-base-content/85 mt-4 space-y-3 text-sm sm:text-base;
+    }
+  }
+}

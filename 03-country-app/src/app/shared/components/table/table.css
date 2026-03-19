@@ -1,0 +1,16 @@
+@reference 'tailwindcss';
+@plugin 'daisyui';
+
+@layer components {
+  .data-table {
+    @apply rounded-box border-base-content/10 bg-base-100 overflow-x-auto border;
+  }
+
+  .dt__caption {
+    @apply text-base-content/70 caption-top px-4 pt-4 text-left text-sm;
+  }
+
+  .dt__empty-cell {
+    @apply text-base-content/60 py-10 text-center;
+  }
+}

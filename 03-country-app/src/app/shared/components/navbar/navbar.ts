@@ -11,6 +11,7 @@ export type INavItem = {
   selector: 'app-navbar',
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
+  styleUrl: './navbar.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Navbar {

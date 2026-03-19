@@ -17,7 +17,7 @@ export type TableColumn<T extends Record<string, unknown>> = {
   selector: 'app-table',
   imports: [],
   templateUrl: './table.html',
-  styles: ``,
+  styleUrl: './table.css',
 })
 export class Table<T extends Record<string, unknown> = Record<string, unknown>> {
   readonly columns = input.required<readonly TableColumn<T>[]>();

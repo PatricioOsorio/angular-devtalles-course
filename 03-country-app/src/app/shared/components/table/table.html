@@ -1,7 +1,7 @@
-<div class="rounded-box border-base-content/10 bg-base-100 overflow-x-auto border">
+<div class="data-table">
   <table [class]="tableClass()">
     @if (caption()) {
-      <caption class="text-base-content/70 caption-top px-4 pt-4 text-left text-sm">
+      <caption class="dt__caption">
         {{
           caption()
         }}
@@ -25,7 +25,7 @@
     <tbody>
       @if (rows().length === 0) {
         <tr>
-          <td [attr.colspan]="columns().length || 1" class="text-base-content/60 py-10 text-center">
+          <td [attr.colspan]="columns().length || 1" class="dt__empty-cell">
             {{ emptyMessage() }}
           </td>
         </tr>

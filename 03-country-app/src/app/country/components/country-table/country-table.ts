@@ -14,7 +14,7 @@ export type ICountryRow = {
   selector: 'country-table',
   imports: [Table],
   templateUrl: './country-table.html',
-  styles: ``,
+  styleUrl: './country-table.css',
 })
 export class CountryTable {
   readonly rows = input.required<readonly ICountryRow[]>();
