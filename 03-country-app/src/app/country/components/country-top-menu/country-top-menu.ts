@@ -18,17 +18,17 @@ export class TopMenu {
   readonly menuItems: TopMenuItem[] = [
     {
       label: 'Por capital',
-      routerLink: '/country/by-capital',
+      routerLink: '/search/by-capital',
       ariaLabel: 'Buscar paises por capital',
     },
     {
       label: 'Por país',
-      routerLink: '/country/by-name',
+      routerLink: '/search/by-country',
       ariaLabel: 'Buscar paises por nombre',
     },
     {
       label: 'Por región',
-      routerLink: '/country/by-region',
+      routerLink: '/search/by-region',
       ariaLabel: 'Buscar paises por región',
     },
   ];

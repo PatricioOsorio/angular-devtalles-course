@@ -7,9 +7,8 @@
         <li class="an__item">
           <a
             [routerLink]="item.path"
-            [attr.aria-label]="item.ariaLabel"
-            [routerLinkActiveOptions]="{ exact: true }"
-            [attr.aria-current]="linkActive.isActive ? 'page' : null"
+            [routerLinkActiveOptions]="{ exact: item.exact}"
+            [style.view-transition-name]="linkActive.isActive ? 'nav-active-link' : null"
             #linkActive="routerLinkActive"
             routerLinkActive="an__link--active"
             class="an__link"

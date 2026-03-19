@@ -1,4 +1,4 @@
-<section class="country-search">
+<section class="country-search" [style.view-transition-name]="'country-search'">
   <div class="cs__glow cs__glow--primary" aria-hidden="true"></div>
   <div class="cs__glow cs__glow--accent" aria-hidden="true"></div>
 
@@ -7,46 +7,32 @@
       <span class="cs__badge">Busqueda</span>
 
       <h2 class="cs__title">
-        Encuentra paises por su
-        <span class="cs__title-highlight">capital</span>
+        Encuentra
+        <span class="cs__title-highlight">{{ textSearch() }}</span>
       </h2>
 
       <p class="cs__description">
-        Escribe el nombre de una capital para obtener resultados mas precisos, de forma rapida y sin
-        friccion.
+        {{ textDescription() }}
       </p>
 
       <label class="cs__form" aria-label="Busqueda por capital">
         <div class="cs__label">
-          <span class="cs__label-text">Capital</span>
+          <span class="cs__label-text">{{ textSearch() }}</span>
         </div>
         <div class="cs__input-group">
           <input
             (keyup.enter)="onSearch(inputSearch.value)"
             #inputSearch
             type="search"
-            placeholder="Ej: Santiago, Bogota, Madrid"
+            placeholder="{{ textPlaceholder() }}"
             class="cs__input"
             aria-label="Ingresa una capital"
           />
-          <button
-            (click)="onSearch(inputSearch.value)"
-            type="button"
-            class="cs__button"
-          >
+          <button (click)="onSearch(inputSearch.value)" type="button" class="cs__button">
             Buscar
           </button>
         </div>
       </label>
     </div>
-
-    <aside class="cs__tips">
-      <p class="cs__tips-title">Consejos</p>
-      <ul class="cs__tips-list">
-        <li>Usa el nombre oficial de la capital para mejores resultados.</li>
-        <li>Prueba variaciones sin tildes si no encuentras coincidencias.</li>
-        <li>Empieza con una sola palabra y luego refina.</li>
-      </ul>
-    </aside>
   </div>
 </section>

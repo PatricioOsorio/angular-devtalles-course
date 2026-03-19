@@ -7,6 +7,7 @@
           [attr.aria-label]="item.ariaLabel"
           [routerLinkActiveOptions]="{ exact: true }"
           [attr.aria-current]="linkActive.isActive ? 'page' : null"
+          [style.view-transition-name]="linkActive.isActive ? 'country-active-link' : null"
           #linkActive="routerLinkActive"
           routerLinkActive="ctm__link--active"
           class="ctm__link"

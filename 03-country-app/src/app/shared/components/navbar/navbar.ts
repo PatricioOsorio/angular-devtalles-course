@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { changeTheme } from '@styleguide/core/utils';
 
 export type INavItem = {
   label: string;
   path: string;
-  ariaLabel: string;
+  exact: boolean;
 };
 
 @Component({
@@ -17,11 +16,11 @@ export type INavItem = {
 })
 export class Navbar {
   readonly navItems: INavItem[] = [
-    { label: 'Inicio', path: '/', ariaLabel: 'Ir al inicio' },
+    { label: 'Inicio', path: '/', exact: true },
     {
       label: 'Buscar',
-      path: '/country/by-capital',
-      ariaLabel: 'Ir a buscar paises por capital',
+      path: '/search',
+      exact: false,
     },
   ];
 }
