@@ -2,13 +2,36 @@
 
 @plugin '@styleguide/core' {
   themes:
-    light ,
-    night --default;
+    light --default,
+    night --prefersdark;
 }
-
-/* @import './theme/daisyui-theme.css'; */
 
 @import './base/base.css';
 @import './base/typography.css';
 
 @import './utilities/layout.css';
+
+@layer components {
+  .app-layout {
+    @apply relative min-h-screen overscroll-none isolate bg-base-100 flex flex-col;
+  }
+  
+  /* Gradientes de fondo sutiles para todo el app (ambient glows) */
+  .app-layout::before {
+    content: '';
+    @apply pointer-events-none absolute -top-40 left-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] z-[-1];
+  }
+
+  .app-layout::after {
+    content: '';
+    @apply pointer-events-none absolute top-1/2 right-0 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-[150px] z-[-1];
+  }
+
+  .al__main {
+    @apply flex-1 flex flex-col w-full;
+  }
+
+  .page-title {
+    @apply text-3xl font-black text-base-content sm:text-4xl tracking-tight;
+  }
+}

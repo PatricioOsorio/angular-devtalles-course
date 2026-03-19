@@ -3,6 +3,6 @@
 
 @layer components {
   .by-capital-page {
-    @apply flex w-full flex-col gap-4;
+    @apply flex w-full flex-col gap-8;
   }
 }
