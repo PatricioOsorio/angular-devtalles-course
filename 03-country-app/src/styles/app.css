@@ -35,3 +35,5 @@
     @apply text-3xl font-black text-base-content sm:text-4xl tracking-tight;
   }
 }
+
+@import 'notyf/notyf.min.css';

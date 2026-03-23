@@ -1,12 +1,29 @@
 <section [style.view-transition-name]="'country-table'" class="country-table-wrapper">
-  <app-table
-    [columns]="columns"
-    [rows]="rows()"
-    [zebra]="true"
-    [pinRows]="true"
-    [size]="'sm'"
-    caption="Resultados de busqueda"
-    emptyMessage="No se encontraron paises"
-    [isLoading]="isLoading()"
-  ></app-table>
+  @if (errorMessage()) {
+    <div class="alert alert-error" role="alert" aria-live="assertive">
+      {{ errorMessage() }}
+    </div>
+  } @else {
+    <app-table
+      [columns]="columns()"
+      [rows]="rows()"
+      [zebra]="true"
+      [pinRows]="true"
+      [size]="'sm'"
+      [isLoading]="isLoading() && !hasRows()"
+      caption="Resultados de busqueda"
+      emptyMessage="No se encontraron paises"
+    ></app-table>
+  }
+
+  <ng-template #infoCell let-country>
+    <button
+      (click)="goToCountry(country.code)"
+      [attr.aria-label]="'Ver detalle de ' + country.name"
+      type="button"
+      class="btn btn-primary btn-sm"
+    >
+      Más info
+    </button>
+  </ng-template>
 </section>

@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, input, TemplateRef } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
 
@@ -8,12 +9,17 @@ type TableAlign = 'left' | 'center' | 'right';
 type CellValue = string | number | boolean | null | undefined;
 type HtmlValue = string | SafeHtml | null | undefined;
 
+export type TableCellTemplateContext<T extends Record<string, unknown>> = {
+  $implicit: T;
+  rowIndex: number;
+};
+
 export type TableColumn<T extends Record<string, unknown>> = {
   key: Extract<keyof T, string> | string;
   header: string;
   cell?: (row: T, rowIndex: number) => CellValue;
   cellHtml?: (row: T, rowIndex: number) => HtmlValue;
-  cellTemplate?: TemplateRef<{ $implicit: T; rowIndex: number }>;
+  cellTemplate?: TemplateRef<TableCellTemplateContext<T>>;
   align?: TableAlign;
   headerClass?: string;
   cellClass?: string;
@@ -21,7 +27,7 @@ export type TableColumn<T extends Record<string, unknown>> = {
 
 @Component({
   selector: 'app-table',
-  imports: [Loading],
+  imports: [Loading, NgTemplateOutlet],
   templateUrl: './table.html',
   styleUrl: './table.css',
 })
@@ -57,6 +63,14 @@ export class Table<T extends Record<string, unknown> = Record<string, unknown>> 
 
   getCellHtml(row: T, col: TableColumn<T>, rowIndex: number): HtmlValue {
     return col.cellHtml?.(row, rowIndex) ?? null;
+  }
+
+  getCellTemplateContext(row: T, rowIndex: number): TableCellTemplateContext<T> {
+    return { $implicit: row, rowIndex };
+  }
+
+  hasTemplate(col: TableColumn<T>): boolean {
+    return !!col.cellTemplate;
   }
 
   hasHtml(col: TableColumn<T>): boolean {

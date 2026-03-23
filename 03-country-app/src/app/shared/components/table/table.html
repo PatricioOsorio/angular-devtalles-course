@@ -1,10 +1,8 @@
-<div class="data-table">
+<div class="data-table" role="region" aria-label="Tabla de datos" [attr.aria-busy]="isLoading()">
   <table [class]="tableClass()">
     @if (caption()) {
       <caption class="dt__caption">
-        {{
-          caption()
-        }}
+        {{ caption() }}
       </caption>
     }
 
@@ -23,7 +21,7 @@
     </thead>
 
     <tbody>
-      @if (isLoading()) {
+      @if (isLoading() && rows().length === 0) {
         <tr>
           <td [attr.colspan]="columns().length || 1" class="dt__loading-cell">
             <app-loading />
@@ -44,7 +42,12 @@
                 [class.text-center]="isAlignCenter(col)"
                 [class.text-right]="isAlignRight(col)"
               >
-                @if (hasHtml(col)) {
+                @if (hasTemplate(col)) {
+                  <ng-container
+                    [ngTemplateOutlet]="col.cellTemplate ?? null"
+                    [ngTemplateOutletContext]="getCellTemplateContext(row, rowIndex)"
+                  />
+                } @else if (hasHtml(col)) {
                   <span [innerHTML]="getCellHtml(row, col, rowIndex)"></span>
                 } @else {
                   {{ getCellValue(row, col, rowIndex) }}

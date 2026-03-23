@@ -6,5 +6,9 @@
     textDescription="Escribe el nombre de una capital para obtener resultados mas precisos, de forma rapida y sin friccion."
   />
 
-  <country-table [rows]="countryQuery.data() ?? []" [isLoading]="countryQuery.isLoading()" />
+  <country-table
+    [rows]="countryQuery.data() ?? []"
+    [isLoading]="countryQuery.isLoading()"
+    [errorMessage]="countryQuery.error()?.message ?? ''"
+  />
 </article>

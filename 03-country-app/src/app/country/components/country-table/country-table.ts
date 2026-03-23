@@ -1,6 +1,8 @@
-import { Component, input } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { Component, computed, inject, input, TemplateRef, viewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { TableColumn, Table } from '@app/shared/components/table/table';
+import { Table, TableCellTemplateContext, TableColumn } from '@app/shared/components/table/table';
 import { ICountryVM } from '../../interfaces/country.interface.';
 
 @Component({
@@ -12,8 +14,15 @@ import { ICountryVM } from '../../interfaces/country.interface.';
 export class CountryTable {
   readonly rows = input.required<ICountryVM[]>();
   readonly isLoading = input(false);
+  readonly errorMessage = input('');
 
-  readonly columns: TableColumn<ICountryVM>[] = [
+  readonly infoCell = viewChild<TemplateRef<TableCellTemplateContext<ICountryVM>>>('infoCell');
+
+  private router = inject(Router);
+  private decimalPipe = new DecimalPipe('en-US');
+
+
+  readonly columns = computed<TableColumn<ICountryVM>[]>(() => [
     { key: 'code', header: 'Código', align: 'center', cellClass: 'font-semibold' },
     {
       key: 'flag',
@@ -27,14 +36,20 @@ export class CountryTable {
     {
       key: 'population',
       header: 'Poblacion',
-      align: 'right',
-      cell: (row) => row.population.toLocaleString('es-ES'),
+      cellHtml: (row) =>
+        `<span class="badge badge-primary">${this.decimalPipe.transform(row.population)}</span>`,
     },
     {
       header: 'Más info',
       key: 'info',
+      cellTemplate: this.infoCell(),
       align: 'center',
-      cellHtml: (row) => `<button class="btn btn-sm btn-primary">Más info</button>`,
     },
-  ];
+  ]);
+
+  readonly hasRows = computed(() => this.rows().length > 0);
+
+  goToCountry(code: string): void {
+    void this.router.navigate(['/country/by', code]);
+  }
 }

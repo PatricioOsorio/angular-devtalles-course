@@ -1,12 +1,12 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 
 import { CountryTable } from '@app/country/components/country-table/country-table';
-import { ICountryVM } from '@app/country/interfaces/country.interface.';
 import { CountrySearchInput } from '@app/country/components/country-search-input/country-search-input';
 import { CountryService } from '@app/country/services/country.service';
 import { queryKeys } from '@app/core/query/query-keys';
 import { firstValueFrom } from 'rxjs';
+import { ToastService } from '@app/shared/services/toast.service';
 
 @Component({
   selector: 'by-capital-page',
@@ -16,6 +16,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export default class ByCapitalPage {
   readonly countryService = inject(CountryService);
+  readonly toastService = inject(ToastService);
 
   readonly searchTerm = signal('me');
 
@@ -25,7 +26,10 @@ export default class ByCapitalPage {
   }));
 
   onSearch(query: string) {
-    if (!query.trim()) return;
+    if (!query.trim())
+      return this.toastService.error(
+        'Por favor ingresa el nombre de una capital para realizar la búsqueda.',
+      );
 
     this.searchTerm.set(query);
   }
