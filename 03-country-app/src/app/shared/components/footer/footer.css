@@ -7,7 +7,7 @@
   }
 
   .af__wrapper {
-    @apply relative isolate overflow-hidden rounded-box border border-base-300/60 bg-neutral text-neutral-content;
+    @apply rounded-box border-base-300/70 bg-base-100/80 text-base-content relative isolate overflow-hidden border;
   }
 
   .af__glow {
@@ -15,11 +15,11 @@
   }
 
   .af__glow--primary {
-    @apply -left-16 top-0 h-44 w-44 bg-primary/35;
+    @apply bg-primary/18 top-0 -left-16 h-44 w-44;
   }
 
   .af__glow--accent {
-    @apply -right-12 bottom-0 h-52 w-52 bg-accent/30;
+    @apply bg-accent/16 -right-12 bottom-0 h-52 w-52;
   }
 
   .af__content {
@@ -31,34 +31,34 @@
   }
 
   .af__badge {
-    @apply badge badge-accent border-0 font-semibold uppercase tracking-[0.2em];
+    @apply badge badge-primary border-0 font-semibold tracking-[0.2em] uppercase;
   }
 
   .af__title {
-    @apply text-2xl font-extrabold leading-tight;
+    @apply text-base-content text-2xl leading-tight font-extrabold;
   }
 
   .af__description {
-    @apply text-sm leading-relaxed text-neutral-content/80;
+    @apply text-base-content/75 text-sm leading-relaxed;
   }
 
   .af__button {
-    @apply btn btn-accent btn-sm w-fit;
+    @apply btn btn-primary btn-sm text-primary-content w-fit;
   }
 
   .af__nav {
-    
+    @apply text-base-content;
   }
 
   .af__title-nav {
-    @apply footer-title text-neutral-content;
+    @apply footer-title text-base-content/75;
   }
 
   .af__link {
-    @apply link link-hover;
+    @apply link link-hover text-base-content/80 hover:text-primary;
   }
 
   .af__bottom-bar {
-    @apply relative z-10 border-t border-white/10 px-8 py-4 text-xs text-neutral-content/70 md:px-10;
+    @apply border-base-300/70 text-base-content/60 relative z-10 border-t px-8 py-4 text-xs md:px-10;
   }
 }

@@ -4,8 +4,11 @@
     textSearch="Pais"
     textPlaceholder="Ej: Chile, Colombia, España"
     textDescription="Escribe el nombre de un pais para obtener resultados mas precisos, de forma rapida y sin friccion."
-
   />
 
-  <country-table [rows]="results()" />
+  <country-table
+    [rows]="countryQuery.data() ?? []"
+    [isLoading]="countryQuery.isLoading()"
+    [errorMessage]="countryQuery.error()?.message ?? ''"
+  />
 </article>

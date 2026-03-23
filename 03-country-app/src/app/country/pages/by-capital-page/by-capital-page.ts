@@ -1,11 +1,12 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { injectQuery } from '@tanstack/angular-query-experimental';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { CountryTable } from '@app/country/components/country-table/country-table';
 import { CountrySearchInput } from '@app/country/components/country-search-input/country-search-input';
 import { CountryService } from '@app/country/services/country.service';
+import { CountryTable } from '@app/country/components/country-table/country-table';
 import { queryKeys } from '@app/core/query/query-keys';
-import { firstValueFrom } from 'rxjs';
 import { ToastService } from '@app/shared/services/toast.service';
 
 @Component({
@@ -14,23 +15,42 @@ import { ToastService } from '@app/shared/services/toast.service';
   templateUrl: './by-capital-page.html',
   styleUrl: './by-capital-page.css',
 })
-export default class ByCapitalPage {
+export default class ByCapitalPage implements OnInit {
   readonly countryService = inject(CountryService);
   readonly toastService = inject(ToastService);
+  readonly router = inject(Router);
+  readonly route = inject(ActivatedRoute);
 
-  readonly searchTerm = signal('me');
+  readonly searchTerm = signal('');
 
-  readonly countryQuery = injectQuery(() => ({
-    queryKey: queryKeys.country.byCapital(this.searchTerm()),
-    queryFn: () => firstValueFrom(this.countryService.searchByCapital(this.searchTerm())),
-  }));
+  ngOnInit() {
+    this.route.queryParamMap.subscribe((params) => {
+      const query = params.get('q') ?? '';
+      this.searchTerm.set(query);
+    });
+  }
+
+  readonly countryQuery = injectQuery(() => {
+    const term = this.searchTerm().trim();
+
+    return {
+      queryKey: queryKeys.country.byCapital(term),
+      queryFn: () => firstValueFrom(this.countryService.searchByCapital(term)),
+      enabled: this.searchTerm().length > 0,
+    };
+  });
 
   onSearch(query: string) {
-    if (!query.trim())
+    const term = query.trim();
+
+    if (!term) {
       return this.toastService.error(
         'Por favor ingresa el nombre de una capital para realizar la búsqueda.',
       );
+    }
 
-    this.searchTerm.set(query);
+    this.router.navigate(['/search/by-capital'], {
+      queryParams: { q: term },
+    });
   }
 }

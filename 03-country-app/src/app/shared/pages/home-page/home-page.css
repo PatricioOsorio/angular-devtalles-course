@@ -3,15 +3,15 @@
 
 @layer components {
   .home-page {
-    @apply hero rounded-box border-base-300/40 relative isolate h-full overflow-hidden border;
+    @apply hero rounded-box border-base-300/70 bg-base-100/60 relative isolate h-full overflow-hidden border;
   }
 
   .hp__background {
-    @apply absolute inset-0 bg-cover bg-center blur-sm;
+    @apply absolute inset-0 bg-cover bg-center blur-[1px] brightness-110 saturate-110;
   }
 
   .hp__overlay {
-    @apply hero-overlay from-neutral/90 via-neutral/70 to-primary/40 bg-gradient-to-br;
+    @apply from-base-100/88 via-base-100/72 to-primary/18 absolute inset-0 bg-gradient-to-br;
   }
 
   .hp__glow {
@@ -19,11 +19,11 @@
   }
 
   .hp__glow--left {
-    @apply bg-accent/20 top-16 -left-20 h-72 w-72;
+    @apply bg-primary/15 top-16 -left-20 h-72 w-72;
   }
 
   .hp__glow--right {
-    @apply bg-primary/25 -right-16 bottom-10 h-80 w-80;
+    @apply bg-accent/15 -right-16 bottom-10 h-80 w-80;
   }
 
   .hp__content {
@@ -39,31 +39,31 @@
   }
 
   .hp__badge {
-    @apply badge badge-accent badge-lg border-0 font-semibold tracking-[0.24em] uppercase;
+    @apply badge badge-primary badge-lg border-0 font-semibold tracking-[0.24em] uppercase;
   }
 
   .hp__title {
-    @apply text-neutral-content text-4xl leading-[1.05] font-black sm:text-5xl lg:text-6xl;
+    @apply text-base-content text-4xl leading-[1.05] font-black sm:text-5xl lg:text-6xl;
   }
 
   .hp__title-highlight {
-    @apply text-accent block;
+    @apply text-primary block;
   }
 
   .hp__description {
-    @apply text-neutral-content/90 mx-auto max-w-2xl text-base/relaxed sm:text-lg/relaxed lg:mx-0;
+    @apply text-base-content/80 mx-auto max-w-2xl text-base/relaxed sm:text-lg/relaxed lg:mx-0;
   }
 
   .hp__button {
-    @apply btn btn-accent btn-lg text-accent-content w-full px-10 shadow-xl transition duration-300 hover:-translate-y-0.5 hover:shadow-2xl sm:w-auto;
+    @apply btn btn-primary btn-lg text-primary-content w-full px-10 shadow-xl transition duration-300 hover:-translate-y-0.5 hover:shadow-2xl sm:w-auto;
   }
 
   .hp__aside {
-    @apply bg-base-100/10 text-neutral-content rounded-3xl border border-white/20 p-6 backdrop-blur-md sm:p-8;
+    @apply bg-base-100/75 text-base-content border-base-300/70 rounded-3xl border p-6 backdrop-blur-md sm:p-8;
   }
 
   .hp__aside-title {
-    @apply text-neutral-content/70 text-sm tracking-[0.2em] uppercase;
+    @apply text-base-content/60 text-sm tracking-[0.2em] uppercase;
   }
 
   .hp__aside-subtitle {
@@ -71,6 +71,6 @@
   }
 
   .hp__aside-text {
-    @apply text-neutral-content/85 mt-4;
+    @apply text-base-content/75 mt-4;
   }
 }

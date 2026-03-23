@@ -1,13 +1,13 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, computed, inject, input, TemplateRef, viewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { Table, TableCellTemplateContext, TableColumn } from '@app/shared/components/table/table';
 import { ICountryVM } from '../../interfaces/country.interface.';
 
 @Component({
   selector: 'country-table',
-  imports: [Table],
+  imports: [Table, RouterLink],
   templateUrl: './country-table.html',
   styleUrl: './country-table.css',
 })

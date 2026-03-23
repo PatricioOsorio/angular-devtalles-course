@@ -16,7 +16,6 @@
     @apply relative min-h-screen overscroll-none isolate bg-base-100 flex flex-col;
   }
 
-  /* Gradientes de fondo sutiles para todo el app (ambient glows) */
   .app-layout::before {
     content: '';
     @apply pointer-events-none absolute -top-40 left-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] z-[-1];

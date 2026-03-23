@@ -5,7 +5,7 @@
         <a
           [routerLink]="item.routerLink"
           [attr.aria-label]="item.ariaLabel"
-          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLinkActiveOptions]="{ exact: false }"
           [attr.aria-current]="linkActive.isActive ? 'page' : null"
           [style.view-transition-name]="linkActive.isActive ? 'country-active-link' : null"
           #linkActive="routerLinkActive"

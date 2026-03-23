@@ -17,13 +17,6 @@
   }
 
   <ng-template #infoCell let-country>
-    <button
-      (click)="goToCountry(country.code)"
-      [attr.aria-label]="'Ver detalle de ' + country.name"
-      type="button"
-      class="btn btn-primary btn-sm"
-    >
-      Más info
-    </button>
+    <a [routerLink]="['/search/by', country.code]" class="link link-primary"> Más info </a>
   </ng-template>
 </section>

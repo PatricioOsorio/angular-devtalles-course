@@ -13,14 +13,23 @@ import { CountryMapper } from '../mapper/country.mapper';
 export class CountryService {
   private http = inject(HttpClient);
 
-  searchByCapital(rawQuery: string): Observable<ICountryVM[]> {
-    const query = rawQuery.trim().toLowerCase();
+  searchBy(endpoint: string): (rawQuery: string) => Observable<ICountryVM[]> {
+    return (rawQuery: string) => {
+      const query = rawQuery.trim().toLowerCase();
 
-    return this.http.get<CountryResponse[]>(`${environment.countryApiUrl}/capital/${query}`).pipe(
-      map((countries) => CountryMapper.toCountryVMs(countries)),
-      catchError((error) => {
-        return throwError(() => new Error('Error fetching countries by capital'));
-      }),
-    );
+      if (!query) return throwError(() => new Error('Query cannot be empty'));
+
+      return this.http
+        .get<CountryResponse[]>(`${environment.countryApiUrl}/${endpoint}/${query}`)
+        .pipe(
+          map((countries) => CountryMapper.toCountryVMs(countries)),
+          catchError(() => {
+            return throwError(() => new Error(`Error fetching countries by ${endpoint}`));
+          }),
+        );
+    };
   }
+
+  searchByCapital = this.searchBy('capital');
+  searchByCountry = this.searchBy('name');
 }
