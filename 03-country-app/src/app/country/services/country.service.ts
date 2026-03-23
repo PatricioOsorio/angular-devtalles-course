@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, pipe } from 'rxjs';
 
 import { environment } from '@environments/environment';
 import { CountryResponse } from '../interfaces/country.response';
@@ -18,6 +18,6 @@ export class CountryService {
 
     return this.http
       .get<CountryResponse[]>(`${environment.countryApiUrl}/capital/${query}`)
-      .pipe(map((countries) => countries.map((country) => CountryMapper.toCountryVM(country))));
+      .pipe(map((countries) => CountryMapper.toCountryVMs(countries)));
   }
 }

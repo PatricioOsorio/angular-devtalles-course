@@ -13,7 +13,7 @@ export class CountryTable {
   readonly rows = input.required<ICountryVM[]>();
   readonly isLoading = input(false);
 
-  readonly columns: readonly TableColumn<ICountryVM>[] = [
+  readonly columns: TableColumn<ICountryVM>[] = [
     { key: 'code', header: 'Código', align: 'center', cellClass: 'font-semibold' },
     {
       key: 'flag',

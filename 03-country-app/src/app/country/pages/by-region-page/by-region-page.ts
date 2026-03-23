@@ -10,5 +10,5 @@ import { ICountryVM } from '@app/country/interfaces/country.interface.';
   styleUrl: './by-region-page.css',
 })
 export default class ByRegionPage {
-  readonly results = signal<readonly ICountryVM[]>([]);
+  readonly results = signal<ICountryVM[]>([]);
 }

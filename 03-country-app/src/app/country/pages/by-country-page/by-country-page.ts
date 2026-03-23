@@ -10,7 +10,7 @@ import { ICountryVM } from '@app/country/interfaces/country.interface.';
   styleUrl: './by-country-page.css',
 })
 export default class ByCountryPage {
-  readonly results = signal<readonly ICountryVM[]>([]);
+  readonly results = signal<ICountryVM[]>([]);
 
   onSearch(value: string) {
     console.log(value);
