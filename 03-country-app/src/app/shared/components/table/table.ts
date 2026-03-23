@@ -1,13 +1,19 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, TemplateRef } from '@angular/core';
+import { SafeHtml } from '@angular/platform-browser';
+
+import { Loading } from '../loading/loading';
 
 type TableSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type TableAlign = 'left' | 'center' | 'right';
 type CellValue = string | number | boolean | null | undefined;
+type HtmlValue = string | SafeHtml | null | undefined;
 
 export type TableColumn<T extends Record<string, unknown>> = {
   key: Extract<keyof T, string> | string;
   header: string;
   cell?: (row: T, rowIndex: number) => CellValue;
+  cellHtml?: (row: T, rowIndex: number) => HtmlValue;
+  cellTemplate?: TemplateRef<{ $implicit: T; rowIndex: number }>;
   align?: TableAlign;
   headerClass?: string;
   cellClass?: string;
@@ -15,7 +21,7 @@ export type TableColumn<T extends Record<string, unknown>> = {
 
 @Component({
   selector: 'app-table',
-  imports: [],
+  imports: [Loading],
   templateUrl: './table.html',
   styleUrl: './table.css',
 })
@@ -29,6 +35,7 @@ export class Table<T extends Record<string, unknown> = Record<string, unknown>> 
   readonly pinCols = input(false);
   readonly emptyMessage = input('Sin resultados');
   readonly rowTrackBy = input<(row: T, rowIndex: number) => string | number>((_, i) => i);
+  readonly isLoading = input(false);
 
   readonly tableClass = computed(() => {
     const classes = ['table', `table-${this.size()}`];
@@ -46,6 +53,14 @@ export class Table<T extends Record<string, unknown> = Record<string, unknown>> 
     if (value === null || value === undefined || value === '') return '-';
     if (typeof value === 'boolean') return value ? 'Si' : 'No';
     return String(value);
+  }
+
+  getCellHtml(row: T, col: TableColumn<T>, rowIndex: number): HtmlValue {
+    return col.cellHtml?.(row, rowIndex) ?? null;
+  }
+
+  hasHtml(col: TableColumn<T>): boolean {
+    return typeof col.cellHtml === 'function';
   }
 
   isAlignCenter(col: TableColumn<T>): boolean {

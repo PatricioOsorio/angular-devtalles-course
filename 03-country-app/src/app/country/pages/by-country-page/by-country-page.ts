@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CountrySearchInput } from '@app/country/components/country-search-input/country-search-input';
-import { CountryTable, ICountryRow } from '@app/country/components/country-table/country-table';
+import { CountryTable } from '@app/country/components/country-table/country-table';
+import { ICountryVM } from '@app/country/interfaces/country.interface.';
 
 @Component({
   selector: 'app-by-country-page',
@@ -9,7 +10,7 @@ import { CountryTable, ICountryRow } from '@app/country/components/country-table
   styleUrl: './by-country-page.css',
 })
 export default class ByCountryPage {
-  readonly results = signal<readonly ICountryRow[]>([]);
+  readonly results = signal<readonly ICountryVM[]>([]);
 
   onSearch(value: string) {
     console.log(value);

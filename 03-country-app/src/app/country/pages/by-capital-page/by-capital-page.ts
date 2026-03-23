@@ -1,8 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
+import { injectQuery } from '@tanstack/angular-query-experimental';
 
-import { CountryTable, ICountryRow } from '@app/country/components/country-table/country-table';
+import { CountryTable } from '@app/country/components/country-table/country-table';
+import { ICountryVM } from '@app/country/interfaces/country.interface.';
 import { CountrySearchInput } from '@app/country/components/country-search-input/country-search-input';
 import { CountryService } from '@app/country/services/country.service';
+import { queryKeys } from '@app/core/query/query-keys';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'by-capital-page',
@@ -13,10 +17,16 @@ import { CountryService } from '@app/country/services/country.service';
 export default class ByCapitalPage {
   readonly countryService = inject(CountryService);
 
-  readonly results = signal<readonly ICountryRow[]>([]);
+  readonly searchTerm = signal('me');
+
+  readonly countryQuery = injectQuery(() => ({
+    queryKey: queryKeys.country.byCapital(this.searchTerm()),
+    queryFn: () => firstValueFrom(this.countryService.searchByCapital(this.searchTerm())),
+  }));
 
   onSearch(query: string) {
-    console.log(query);
-    this.countryService.searchByCapital(query).subscribe((countries) => console.log(countries));
+    if (!query.trim()) return;
+
+    this.searchTerm.set(query);
   }
 }
