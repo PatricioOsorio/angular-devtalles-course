@@ -1,0 +1,30 @@
+<section class="empty-state" role="status" aria-live="polite" aria-labelledby="es-title">
+  <div class="es__glow es__glow--primary" aria-hidden="true"></div>
+  <div class="es__glow es__glow--accent" aria-hidden="true"></div>
+  <article class="es__card">
+    <p class="es__badge">{{ badge() }}</p>
+    <span class="es__orb es__orb--alt"></span>
+    <div class="es__illustration" aria-hidden="true">
+      <span class="es__orb"></span>
+      <span class="es__orb es__orb--alt"></span>
+      <span class="es__code">{{ code() }}</span>
+    </div>
+
+    <h2 id="es-title" class="es__title">{{ title() }}</h2>
+    <p class="es__description">{{ description() }}</p>
+
+    <div class="es__actions">
+      @if (actionLink()) {
+        <a [routerLink]="actionLink()!" class="es__button es__button--primary">
+          {{ actionLabel() }}
+        </a>
+      }
+
+      @if (secondaryActionLink()) {
+        <a [routerLink]="secondaryActionLink()!" class="es__button es__button--ghost">
+          {{ secondaryActionLabel() }}
+        </a>
+      }
+    </div>
+  </article>
+</section>

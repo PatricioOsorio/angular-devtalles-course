@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomePage } from '@app/shared/pages/home-page/home-page';
+import { NotFound } from './shared/components/not-found/not-found';
 
 export const routes: Routes = [
   {
@@ -12,6 +13,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
+    // redirectTo: '',
+    component: NotFound,
   },
 ];

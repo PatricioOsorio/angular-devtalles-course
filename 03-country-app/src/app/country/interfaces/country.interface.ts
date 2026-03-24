@@ -1,0 +1,23 @@
+export type ICountryVM = {
+  name: string;
+  capital: string;
+  code: string;
+  flag: string;
+  population: number;
+  region: string;
+  subregion: string;
+  borders: string[];
+  area: number;
+  tld: string;
+  continents: string[];
+  timezones: string[];
+  independent: boolean;
+  unMember: boolean;
+  mapUrl: string;
+  languages: string[];
+  currencies: string[];
+  latlng: number[];
+  status: string;
+  drivingSide: string;
+  postalCodeFormat?: string;
+};

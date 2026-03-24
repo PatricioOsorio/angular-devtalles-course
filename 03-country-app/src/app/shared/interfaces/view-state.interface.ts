@@ -1,1 +1,1 @@
-export type IViewState = 'loading' | 'empty' | 'data';
+export type IViewState = 'loading' | 'empty' | 'data' | 'error';

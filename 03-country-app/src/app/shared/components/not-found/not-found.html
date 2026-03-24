@@ -1,0 +1,23 @@
+<section class="not-found" role="region" aria-labelledby="nf-title">
+  <div class="nf__noise" aria-hidden="true"></div>
+  <div class="nf__halo nf__halo--primary" aria-hidden="true"></div>
+  <div class="nf__halo nf__halo--accent" aria-hidden="true"></div>
+
+  <article class="nf__card">
+    <p class="nf__badge">Error 404</p>
+
+    <h1 id="nf-title" class="nf__title">Este destino no existe en el mapa</h1>
+
+    <p class="nf__description">
+      La ruta que intentaste abrir no se encontró. Vuelve al inicio o navega por capitales para
+      seguir explorando.
+    </p>
+
+    <div class="nf__actions">
+      <a (click)="goBack()" class="nf__button nf__button--primary"> Regresar un paso </a>
+      <a routerLink="/" class="nf__button nf__button--ghost"> Volver al inicio </a>
+    </div>
+
+    <p class="nf__hint">Sugerencia: revisa la URL o usa el menú superior.</p>
+  </article>
+</section>

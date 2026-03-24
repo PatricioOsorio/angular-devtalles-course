@@ -4,7 +4,7 @@ import { map, Observable, catchError, throwError } from 'rxjs';
 
 import { environment } from '@environments/environment';
 import { CountryResponse } from '../interfaces/country.response';
-import { ICountryVM } from '../interfaces/country.interface.';
+import { ICountryVM } from '../interfaces/country.interface';
 import { CountryMapper } from '../mapper/country.mapper';
 
 @Injectable({
@@ -32,4 +32,5 @@ export class CountryService {
 
   searchByCapital = this.searchBy('capital');
   searchByCountry = this.searchBy('name');
+  searchByAlphaCode = this.searchBy('alpha');
 }

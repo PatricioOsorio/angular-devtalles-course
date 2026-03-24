@@ -1,1 +1,181 @@
-<p>country-page works!</p>
+@switch (viewState()) {
+  @case ('loading') {
+    <app-loading />
+  }
+  @case ('error') {
+    <app-not-found />
+  }
+  @case ('empty') {
+    <app-empty />
+  }
+  @default {
+    @let countries = countryQuery.data()!;
+    @let country = countries[0];
+
+    <article class="cd">
+      <!-- Aura Background -->
+      <div class="cd__backdrop">
+        <img [src]="country.flag" alt="" class="cd__backdrop-img" aria-hidden="true" />
+        <div class="cd__backdrop-overlay"></div>
+      </div>
+
+      <div class="cd__container">
+        <!-- Hero Header -->
+        <header class="cd__header">
+          <figure class="cd__flag-wrapper">
+            <img [src]="country.flag" [alt]="'Flag of ' + country.name" class="cd__flag" />
+          </figure>
+          
+          <div class="cd__title-area">
+            <div class="cd__badges">
+              <span class="cd__badge">{{ country.code }}</span>
+              <span class="cd__badge">{{ country.status | uppercase }}</span>
+              <span class="cd__badge">{{ country.region }}</span>
+              @if (country.tld) { <span class="cd__badge--accent">{{ country.tld }}</span> }
+              @if (country.independent) { <span class="cd__badge--accent">Independent</span> }
+              @if (country.unMember) { <span class="cd__badge--accent">UN Member</span> }
+            </div>
+            
+            <h1 class="cd__name">{{ country.name }}</h1>
+            <h2 class="cd__subregion">
+              @if (country.continents.length) {
+                {{ country.continents.join(', ') }} &bull;
+              }
+              {{ country.subregion }}
+            </h2>
+          </div>
+        </header>
+
+        <!-- Floating Stats -->
+        <div class="cd__stats">
+          <div class="cd__stat">
+            <div class="cd__stat-label">Capital</div>
+            <div class="cd__stat-val">{{ country.capital }}</div>
+          </div>
+          <div class="cd__stat">
+            <div class="cd__stat-label">Population</div>
+            <div class="cd__stat-val">{{ country.population | number }}</div>
+            <div class="cd__stat-desc">Inhabitants</div>
+          </div>
+          <div class="cd__stat">
+            <div class="cd__stat-label">Area</div>
+            <div class="cd__stat-val">{{ country.area | number }}</div>
+            <div class="cd__stat-desc">Sq. Km</div>
+          </div>
+        </div>
+
+        <!-- Bento Grid Details -->
+        <div class="cd__bento">
+          
+          <!-- Culture & Economy -->
+          @if (country.languages.length || country.currencies.length) {
+            <div class="cd__bento-item">
+              <h3 class="cd__bento-title">Culture & Economy</h3>
+              
+              @if (country.languages.length) {
+                <div class="cd__bento-group">
+                  <div class="cd__bento-label">Languages</div>
+                  <div class="cd__tag-list">
+                    @for (lang of country.languages; track lang) {
+                      <span class="cd__tag">{{ lang }}</span>
+                    }
+                  </div>
+                </div>
+              }
+              
+              @if (country.currencies.length) {
+                <div class="cd__bento-group mt-2">
+                  <div class="cd__bento-label">Currencies</div>
+                  <div class="cd__tag-list">
+                    @for (curr of country.currencies; track curr) {
+                      <span class="cd__tag">{{ curr }}</span>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          }
+
+          <!-- Location & Routing -->
+          <div class="cd__bento-item">
+            <h3 class="cd__bento-title">Location & Routing</h3>
+            
+            <div class="cd__bento-group">
+              <div class="cd__bento-label">Coordinates (Lat, Lng)</div>
+              <div class="cd__bento-value">
+                {{ country.latlng[0] | number: '1.2-2' }}, {{ country.latlng[1] | number: '1.2-2' }}
+              </div>
+            </div>
+
+            <div class="flex gap-8 mt-4">
+              <div class="cd__bento-group">
+                <div class="cd__bento-label">Driving Side</div>
+                <div class="cd__bento-value capitalize">{{ country.drivingSide }}</div>
+              </div>
+              
+              @if (country.postalCodeFormat) {
+                <div class="cd__bento-group">
+                  <div class="cd__bento-label">Postal Code</div>
+                  <div class="cd__bento-value font-mono tracking-widest">{{ country.postalCodeFormat }}</div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- General & Topology -->
+          <div class="cd__bento-item md:col-span-2 lg:col-span-1">
+            <h3 class="cd__bento-title">General & Topology</h3>
+            
+            @if (country.timezones.length) {
+              <div class="cd__bento-group">
+                <div class="cd__bento-label">Timezones</div>
+                <div class="cd__tag-list">
+                  @for (tz of country.timezones; track tz) {
+                    <span class="cd__tag text-xs">{{ tz }}</span>
+                  }
+                </div>
+              </div>
+            }
+
+            @if (country.borders.length) {
+              <div class="cd__bento-group mt-2">
+                <div class="cd__bento-label">Borders</div>
+                <div class="cd__tag-list">
+                  @for (border of country.borders; track border) {
+                    <span class="cd__tag--kbd">{{ border }}</span>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+
+        </div>
+
+        <!-- Call to Action -->
+        @if (country.mapUrl) {
+          <div class="cd__action-area">
+            <a
+              [href]="country.mapUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cd__btn-primary"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="size-6 mr-2 inline-block -mt-1"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+              </svg>
+              View on Google Maps
+            </a>
+          </div>
+        }
+      </div>
+    </article>
+  }
+}

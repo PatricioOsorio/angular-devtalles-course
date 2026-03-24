@@ -3,7 +3,7 @@ import { Component, computed, inject, input, TemplateRef, viewChild } from '@ang
 import { Router, RouterLink } from '@angular/router';
 
 import { Table, TableCellTemplateContext, TableColumn } from '@app/shared/components/table/table';
-import { ICountryVM } from '../../interfaces/country.interface.';
+import { ICountryVM } from '../../interfaces/country.interface';
 
 @Component({
   selector: 'country-table',

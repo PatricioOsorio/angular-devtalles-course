@@ -1,0 +1,77 @@
+@reference 'tailwindcss';
+@plugin 'daisyui';
+
+@layer components {
+  .not-found {
+    @apply rounded-box border-base-300/80 bg-base-200/35 relative isolate mx-auto mt-8 min-h-[70vh] w-full max-w-6xl overflow-hidden border px-4 py-8 sm:px-8 sm:py-12;
+  }
+
+  .nf__noise {
+    @apply pointer-events-none absolute inset-0 opacity-25;
+    background-image:
+      radial-gradient(circle at 25% 20%, hsl(var(--p) / 0.18), transparent 36%),
+      radial-gradient(circle at 80% 75%, hsl(var(--a) / 0.18), transparent 40%),
+      linear-gradient(115deg, hsl(var(--b1) / 0.95), hsl(var(--b2) / 0.95));
+  }
+
+  .nf__halo {
+    @apply pointer-events-none absolute rounded-full blur-3xl;
+    animation: nf-float 8s ease-in-out infinite;
+  }
+
+  .nf__halo--primary {
+    @apply bg-primary/20 top-8 -left-16 h-52 w-52 sm:h-64 sm:w-64;
+  }
+
+  .nf__halo--accent {
+    @apply bg-accent/20 -right-16 bottom-4 h-56 w-56 sm:h-72 sm:w-72;
+    animation-delay: 1.2s;
+  }
+
+  .nf__card {
+    @apply rounded-box border-base-300/70 bg-base-100/90 relative z-10 mx-auto flex max-w-2xl flex-col gap-5 border p-6 shadow-xl backdrop-blur md:p-10;
+  }
+
+  .nf__badge {
+    @apply badge badge-error badge-outline w-fit border-0 font-bold tracking-[0.2em] uppercase;
+  }
+
+  .nf__title {
+    @apply text-base-content text-3xl leading-tight font-black sm:text-4xl;
+    text-wrap: balance;
+  }
+
+  .nf__description {
+    @apply text-base-content/75 text-sm leading-relaxed sm:text-base;
+  }
+
+  .nf__actions {
+    @apply mt-1 flex flex-col gap-3 sm:flex-row;
+  }
+
+  .nf__button {
+    @apply btn w-full sm:w-auto;
+  }
+
+  .nf__button--primary {
+    @apply btn-primary text-primary-content;
+  }
+
+  .nf__button--ghost {
+    @apply btn-ghost border-base-300/80 border;
+  }
+
+  .nf__hint {
+    @apply text-base-content/55 text-xs font-medium tracking-wide sm:text-sm;
+  }
+}
+
+@keyframes nf-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}

@@ -39,6 +39,7 @@ export default class ByCountryPage implements OnInit {
       enabled: this.searchTerm().length > 0,
     };
   });
+
   onSearch(value: string) {
     const term = value.trim();
 
