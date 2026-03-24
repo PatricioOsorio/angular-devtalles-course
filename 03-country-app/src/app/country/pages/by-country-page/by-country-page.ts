@@ -36,7 +36,7 @@ export default class ByCountryPage implements OnInit {
     return {
       queryKey: queryKeys.country.byName(term),
       queryFn: () => firstValueFrom(this.countryService.searchByCountry(term)),
-      enabled: this.searchTerm().length > 0,
+      enabled: term.length > 0,
     };
   });
 

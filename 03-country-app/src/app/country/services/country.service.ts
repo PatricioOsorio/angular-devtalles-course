@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { map, Observable, catchError, throwError } from 'rxjs';
 
 import { environment } from '@environments/environment';
@@ -12,6 +12,11 @@ import { CountryMapper } from '../mapper/country.mapper';
 })
 export class CountryService {
   private http = inject(HttpClient);
+
+  // public cacheStore = {
+  //   byCapital: signal<string>(''),
+  //   byCountry: signal<string>(''),
+  // }
 
   searchBy(endpoint: string): (rawQuery: string) => Observable<ICountryVM[]> {
     return (rawQuery: string) => {

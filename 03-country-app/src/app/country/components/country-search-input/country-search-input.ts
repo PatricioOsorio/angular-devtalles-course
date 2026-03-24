@@ -7,6 +7,7 @@ import { Component, input, output } from '@angular/core';
   styleUrl: './country-search-input.css',
 })
 export class CountrySearchInput {
+  readonly value = input<string>('');
   readonly textSearch = input<string>('Buscar');
   readonly textPlaceholder = input<string>('Ejemplo: Madrid');
   readonly textDescription = input<string>(

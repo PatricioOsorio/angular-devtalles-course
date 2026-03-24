@@ -27,6 +27,7 @@
             placeholder="{{ textPlaceholder() }}"
             class="cs__input"
             aria-label="Ingresa una capital"
+            [value]="value()"
           />
           <button (click)="onSearch(inputSearch.value)" type="button" class="cs__button">
             Buscar

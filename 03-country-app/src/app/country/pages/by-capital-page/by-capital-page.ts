@@ -21,7 +21,7 @@ export default class ByCapitalPage implements OnInit {
   readonly router = inject(Router);
   readonly route = inject(ActivatedRoute);
 
-  readonly searchTerm = signal('');
+  readonly searchTerm = signal<string>('');
 
   ngOnInit() {
     this.route.queryParamMap.subscribe((params) => {
@@ -36,7 +36,7 @@ export default class ByCapitalPage implements OnInit {
     return {
       queryKey: queryKeys.country.byCapital(term),
       queryFn: () => firstValueFrom(this.countryService.searchByCapital(term)),
-      enabled: this.searchTerm().length > 0,
+      enabled: term.length > 0,
     };
   });
 
