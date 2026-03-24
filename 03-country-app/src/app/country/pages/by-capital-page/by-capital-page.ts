@@ -41,16 +41,25 @@ export default class ByCapitalPage implements OnInit {
   });
 
   onSearch(query: string) {
+    this.handleSearch(query);
+  }
+
+  onSearchDebounced(query: string) {
+    this.handleSearch(query);
+  }
+
+  private handleSearch(query: string) {
     const term = query.trim();
 
-    if (!term) {
-      return this.toastService.error(
-        'Por favor ingresa el nombre de una capital para realizar la búsqueda.',
+    if (term === this.searchTerm()) {
+      return this.toastService.warning(
+        'El término de búsqueda es el mismo que el actual. Por favor, ingresa un término diferente para obtener nuevos resultados.',
       );
     }
 
     this.router.navigate(['/search/by-capital'], {
       queryParams: { q: term },
+      replaceUrl: true,
     });
   }
 }

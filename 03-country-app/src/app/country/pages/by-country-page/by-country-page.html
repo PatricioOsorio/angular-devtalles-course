@@ -1,7 +1,8 @@
 <article class="by-country-page">
   <country-search-input
     (searched)="onSearch($event)"
-    [value]="searchTerm()"
+    (valueChanged)="onSearchDebounced($event)"
+    [initialValue]="searchTerm()"
     textSearch="Pais"
     textPlaceholder="Ej: Chile, Colombia, España"
     textDescription="Escribe el nombre de un pais para obtener resultados mas precisos, de forma rapida y sin friccion."

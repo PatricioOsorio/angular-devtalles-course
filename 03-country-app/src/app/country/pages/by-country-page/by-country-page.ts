@@ -40,16 +40,26 @@ export default class ByCountryPage implements OnInit {
     };
   });
 
-  onSearch(value: string) {
-    const term = value.trim();
+  onSearch(query: string) {
+    this.handleSearch(query);
+  }
 
-    if (!term) {
-      this.toastService.error('Por favor ingresa el nombre de un país para realizar la búsqueda.');
-      return;
+  onSearchDebounced(query: string) {
+    this.handleSearch(query);
+  }
+
+  private handleSearch(query: string) {
+    const term = query.trim();
+
+    if (term === this.searchTerm()) {
+      return this.toastService.warning(
+        'El término de búsqueda es el mismo que el actual. Por favor, ingresa un término diferente para obtener nuevos resultados.',
+      );
     }
 
     this.router.navigate(['/search/by-country'], {
       queryParams: { q: term },
+      replaceUrl: true,
     });
   }
 }

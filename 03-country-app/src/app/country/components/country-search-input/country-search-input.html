@@ -1,4 +1,4 @@
-<section class="country-search" [style.view-transition-name]="'country-search'">
+<section [style.view-transition-name]="'country-search'" class="country-search">
   <div class="cs__glow cs__glow--primary" aria-hidden="true"></div>
   <div class="cs__glow cs__glow--accent" aria-hidden="true"></div>
 
@@ -21,15 +21,16 @@
         </div>
         <div class="cs__input-group">
           <input
-            (keyup.enter)="onSearch(inputSearch.value)"
+            (keyup.enter)="onSubmit(inputSearch.value)"
+            (input)="onTyping(inputSearch.value)"
+            [value]="inputValue()"
             #inputSearch
             type="search"
             placeholder="{{ textPlaceholder() }}"
             class="cs__input"
             aria-label="Ingresa una capital"
-            [value]="value()"
           />
-          <button (click)="onSearch(inputSearch.value)" type="button" class="cs__button">
+          <button (click)="onSubmit(inputSearch.value)" type="button" class="cs__button">
             Buscar
           </button>
         </div>
