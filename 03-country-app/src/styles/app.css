@@ -47,6 +47,7 @@
 @layer components {
   .app-layout {
     @apply bg-base-100 relative isolate flex min-h-screen flex-col overscroll-none;
+    @apply grid min-h-screen grid-rows-[auto_1fr_auto];
   }
 
   .app-layout::before {
@@ -60,7 +61,7 @@
   }
 
   .al__main {
-    @apply flex w-full flex-1 flex-col;
+    @apply flex w-full flex-1 flex-col gap-4;
   }
 
   .page-title {

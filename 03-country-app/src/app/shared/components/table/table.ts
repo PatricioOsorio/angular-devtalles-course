@@ -44,10 +44,10 @@ export class Table<T extends Record<string, unknown> = Record<string, unknown>> 
   readonly isLoading = input(false);
 
   readonly tableClass = computed(() => {
-    const classes = ['table', `table-${this.size()}`];
-    if (this.zebra()) classes.push('table-zebra');
-    if (this.pinRows()) classes.push('table-pin-rows');
-    if (this.pinCols()) classes.push('table-pin-cols');
+    const classes = ['dt__table', `dt__table--${this.size()}`];
+    if (this.zebra()) classes.push('dt__table--zebra');
+    if (this.pinRows()) classes.push('dt__table--pin-rows');
+    if (this.pinCols()) classes.push('dt__table--pin-cols');
     return classes.join(' ');
   });
 

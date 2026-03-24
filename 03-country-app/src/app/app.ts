@@ -7,7 +7,6 @@ import { Navbar } from './shared/components/navbar/navbar';
   selector: 'app-root',
   imports: [RouterOutlet, Footer, Navbar],
   templateUrl: './app.html',
-  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('03-country-app');

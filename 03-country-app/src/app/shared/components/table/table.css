@@ -2,15 +2,42 @@
 @plugin 'daisyui';
 
 @layer components {
-  .data-table {
-    @apply rounded-box border-base-content/10 bg-base-100 overflow-x-auto border;
+  .dt {
+    @apply w-full overflow-x-auto rounded-box border border-base-300/50 bg-base-100/80 backdrop-blur-md shadow-sm;
   }
+
+  .dt__table {
+    @apply table w-full;
+  }
+
+  .dt__table--xs { @apply table-xs; }
+  .dt__table--sm { @apply table-sm; }
+  .dt__table--md { @apply table-md; }
+  .dt__table--lg { @apply table-lg; }
+  .dt__table--xl { @apply table-xl; }
+
+  .dt__table--zebra { @apply table-zebra; }
 
   .dt__caption {
-    @apply text-base-content/70 caption-top px-4 pt-4 text-left text-sm;
+    @apply text-base-content/70 caption-top px-4 pt-4 pb-2 text-left text-sm font-semibold tracking-wide uppercase;
   }
 
-  .dt__empty-cell {
+  .dt__th {
+    @apply whitespace-nowrap bg-base-200/50 text-base-content/80 font-semibold;
+  }
+
+  .dt__th--center { @apply text-center; }
+  .dt__th--right { @apply text-right; }
+
+  .dt__td {
+    @apply whitespace-nowrap;
+  }
+
+  .dt__td--center { @apply text-center; }
+  .dt__td--right { @apply text-right; }
+
+  .dt__empty-cell,
+  .dt__loading-cell {
     @apply text-base-content/60 py-10 text-center;
   }
 }

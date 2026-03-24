@@ -3,5 +3,6 @@
 
 @layer components {
   .by-country-page {
+    @apply flex flex-col gap-4;
   }
 }

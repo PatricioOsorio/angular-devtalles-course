@@ -1,4 +1,4 @@
-<div class="data-table" role="region" aria-label="Tabla de datos" [attr.aria-busy]="isLoading()">
+<div class="dt" role="region" aria-label="Tabla de datos" [attr.aria-busy]="isLoading()">
   <table [class]="tableClass()">
     @if (caption()) {
       <caption class="dt__caption">
@@ -10,9 +10,10 @@
       <tr>
         @for (col of columns(); track col.key) {
           <th
+            class="dt__th"
             [class]="col.headerClass ?? ''"
-            [class.text-center]="isAlignCenter(col)"
-            [class.text-right]="isAlignRight(col)"
+            [class.dt__th--center]="isAlignCenter(col)"
+            [class.dt__th--right]="isAlignRight(col)"
           >
             {{ col.header }}
           </th>
@@ -38,9 +39,10 @@
           <tr>
             @for (col of columns(); track col.key) {
               <td
+                class="dt__td"
                 [class]="col.cellClass ?? ''"
-                [class.text-center]="isAlignCenter(col)"
-                [class.text-right]="isAlignRight(col)"
+                [class.dt__td--center]="isAlignCenter(col)"
+                [class.dt__td--right]="isAlignRight(col)"
               >
                 @if (hasTemplate(col)) {
                   <ng-container

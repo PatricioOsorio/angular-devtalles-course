@@ -3,5 +3,6 @@
 
 @layer components {
   .by-region-page {
+    @apply flex flex-col gap-4;
   }
 }
