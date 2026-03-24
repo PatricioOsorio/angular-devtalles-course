@@ -44,6 +44,8 @@
 
 @import './utilities/layout.css';
 
+@import './components/notyf-custom.css';
+
 @layer components {
   .app-layout {
     @apply bg-base-100 relative isolate flex min-h-screen flex-col overscroll-none;
@@ -68,5 +70,3 @@
     @apply text-base-content text-3xl font-black tracking-tight sm:text-4xl;
   }
 }
-
-@import 'notyf/notyf.min.css';

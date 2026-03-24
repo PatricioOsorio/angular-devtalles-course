@@ -1,0 +1,61 @@
+@reference 'tailwindcss';
+@plugin 'daisyui';
+@import 'notyf/notyf.min.css';
+
+@layer components {
+  .notyf {
+    @apply mt-4;
+  }
+
+  .notyf__wrapper {
+    @apply p-0;
+  }
+
+  .notyf__toast {
+    @apply border-base-300/50 bg-base-100/90 text-base-content overflow-hidden rounded-3xl border shadow-lg backdrop-blur-md;
+    min-width: 20rem;
+    max-width: 28rem;
+    border-radius: 1rem !important;
+  }
+
+  .notyf__message {
+    @apply text-base-content relative px-5 py-4 pr-12 text-sm leading-5 font-medium;
+  }
+
+  .app-toast .notyf__message::before {
+    content: '';
+    @apply bg-base-300 absolute top-3 bottom-3 left-0 w-1 rounded-full;
+  }
+
+  .app-toast--success .notyf__message::before {
+    @apply bg-success;
+  }
+
+  .app-toast--error .notyf__message::before {
+    @apply bg-error;
+  }
+
+  .app-toast--info .notyf__message::before {
+    @apply bg-info;
+  }
+
+  .app-toast--warning .notyf__message::before {
+    @apply bg-warning;
+  }
+
+  .app-toast--success {
+    @apply bg-success/5;
+  }
+
+  .app-toast--error {
+    @apply bg-error/5;
+  }
+
+  .app-toast--info {
+    @apply bg-info/5;
+  }
+
+  .app-toast--warning {
+    @apply bg-warning/10;
+  }
+}
