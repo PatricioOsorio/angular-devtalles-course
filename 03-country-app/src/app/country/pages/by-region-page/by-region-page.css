@@ -5,4 +5,8 @@
   .by-region-page {
     @apply flex flex-col gap-4;
   }
+
+  .brp__buttons {
+    @apply flex flex-row gap-2;
+  }
 }

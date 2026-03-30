@@ -17,6 +17,7 @@ const countryRoutes: Routes = [
       {
         path: 'by-region',
         loadComponent: () => import('@app/country/pages/by-region-page/by-region-page'),
+
       },
       {
         path:"by/:code",

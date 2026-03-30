@@ -1,21 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-
-type TopMenuItem = {
-  label: string;
-  routerLink: string;
-  ariaLabel: string;
-};
+import { Component } from '@angular/core';
+import { ITopMenuItem } from '@app/country/interfaces/top-menu.interface';
+import { MenuList } from '@app/shared/components/menu-list/menu-list';
 
 @Component({
   selector: 'country-top-menu',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [MenuList],
   templateUrl: './country-top-menu.html',
   styleUrl: './country-top-menu.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopMenu {
-  readonly menuItems: TopMenuItem[] = [
+  readonly items: ITopMenuItem[] = [
     {
       label: 'Por capital',
       routerLink: '/search/by-capital',

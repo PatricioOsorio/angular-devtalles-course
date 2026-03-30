@@ -2,23 +2,4 @@
 @plugin 'daisyui';
 
 @layer components {
-  .country-top-menu {
-    @apply rounded-box border border-base-300/70 bg-base-100/80 p-1.5 backdrop-blur;
-  }
-
-  .ctm__list {
-    @apply menu menu-horizontal menu-sm sm:menu-md rounded-box bg-base-200/70 w-full justify-start gap-1.5 p-1;
-  }
-
-  .ctm__item {
-    /* Menu item default styles */
-  }
-
-  .ctm__link {
-    @apply font-medium whitespace-nowrap;
-  }
-
-  .ctm__link--active {
-    @apply menu-active bg-primary text-primary-content shadow-sm;
-  }
 }

@@ -1,0 +1,12 @@
+@reference 'tailwindcss';
+@plugin 'daisyui';
+
+@layer components {
+  .menu-list {
+    @apply rounded-box border-base-300/70 bg-base-100/80 border p-1.5 backdrop-blur;
+  }
+
+  .ml__main {
+    @apply menu menu-horizontal menu-sm sm:menu-md rounded-box bg-base-200/70 w-full justify-start gap-1.5 p-1;
+  }
+}

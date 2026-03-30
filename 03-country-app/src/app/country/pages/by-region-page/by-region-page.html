@@ -1,3 +1,19 @@
 <article class="by-region-page">
-  <country-table [rows]="results()"  />
+  <section class="brp__buttons">
+    @for (region of countryService.regions; track region) {
+      <button
+        (click)="regionSelected(region)"
+        [class.btn-primary]="region === selectedRegion()"
+        class="btn mr-4"
+      >
+        {{ region }}
+      </button>
+    }
+  </section>
+
+  <country-table
+    [rows]="countryQuery.data() ?? []"
+    [isLoading]="countryQuery.isLoading()"
+    [errorMessage]="countryQuery.error()?.message ?? ''"
+  />
 </article>

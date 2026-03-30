@@ -6,6 +6,7 @@ import { environment } from '@environments/environment';
 import { CountryResponse } from '../interfaces/country.response';
 import { ICountryVM } from '../interfaces/country.interface';
 import { CountryMapper } from '../mapper/country.mapper';
+import { IRegion } from '../interfaces/regions.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +14,7 @@ import { CountryMapper } from '../mapper/country.mapper';
 export class CountryService {
   private http = inject(HttpClient);
 
-  // public cacheStore = {
-  //   byCapital: signal<string>(''),
-  //   byCountry: signal<string>(''),
-  // }
+  public regions: IRegion[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'Antarctic'];
 
   searchBy(endpoint: string): (rawQuery: string) => Observable<ICountryVM[]> {
     return (rawQuery: string) => {
@@ -38,4 +36,5 @@ export class CountryService {
   searchByCapital = this.searchBy('capital');
   searchByCountry = this.searchBy('name');
   searchByAlphaCode = this.searchBy('alpha');
+  searchByRegion = this.searchBy('region');
 }

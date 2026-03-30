@@ -1,0 +1,12 @@
+<nav class="menu-list" aria-label="Navegacion">
+  <ul class="ml__main">
+    @for (item of values(); track item) {
+      <li
+        [label]="item.label"
+        [routerLink]="item.routerLink"
+        [ariaLabel]="item.ariaLabel"
+        app-menu-list-item
+      ></li>
+    }
+  </ul>
+</nav>

@@ -1,0 +1,15 @@
+@reference 'tailwindcss';
+@plugin 'daisyui';
+
+@layer components {
+  .mli__item {
+  }
+
+  .mli__link {
+    @apply font-medium whitespace-nowrap;
+  }
+
+  .mli__link--active {
+    @apply menu-active bg-primary text-primary-content shadow-sm;
+  }
+}

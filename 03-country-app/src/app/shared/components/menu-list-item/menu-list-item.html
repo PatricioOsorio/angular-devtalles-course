@@ -1,0 +1,12 @@
+<a
+  [routerLink]="routerLink()"
+  [attr.aria-label]="ariaLabel()"
+  [routerLinkActiveOptions]="{ exact: false }"
+  [attr.aria-current]="linkActive.isActive ? 'page' : null"
+  [style.view-transition-name]="linkActive.isActive ? 'menu-list-item-active-link' : null"
+  #linkActive="routerLinkActive"
+  routerLinkActive="mli__link--active"
+  class="mli__link"
+>
+  {{ label() }}
+</a>
