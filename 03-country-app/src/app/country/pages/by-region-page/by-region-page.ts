@@ -5,11 +5,21 @@ import { queryKeys } from '@app/core/query/query-keys';
 
 import { CountryTable } from '@app/country/components/country-table/country-table';
 import { ICountryVM } from '@app/country/interfaces/country.interface';
+import { IRegion } from '@app/country/interfaces/regions.interface';
 import { CountryService } from '@app/country/services/country.service';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { firstValueFrom } from 'rxjs';
 
-const DEFAULT_REGION = "Africa";
+const DEFAULT_REGION = 'Africa';
+
+function validateRegion(region: string | null | undefined): IRegion {
+  const validRegions: IRegion[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'Antarctic'];
+  if (region && validRegions.includes(region as IRegion)) {
+    return region as IRegion;
+  }
+
+  return DEFAULT_REGION;
+}
 
 @Component({
   selector: 'app-by-region-page',
@@ -25,7 +35,7 @@ export default class ByRegionPage {
   readonly route = inject(ActivatedRoute);
 
   private queryParams = toSignal(this.route.queryParamMap);
-  readonly selectedRegion = signal<string>(DEFAULT_REGION);
+  readonly selectedRegion = signal<IRegion>(DEFAULT_REGION);
 
   constructor() {
     const initialRegion = this.route.snapshot.queryParamMap.get('region');
@@ -35,7 +45,7 @@ export default class ByRegionPage {
     }
 
     effect(() => {
-      const region = this.queryParams()?.get('region') ?? DEFAULT_REGION;
+      const region = validateRegion(this.queryParams()?.get('region'));
       this.selectedRegion.set(region);
     });
   }
@@ -51,5 +61,5 @@ export default class ByRegionPage {
     queryKey: queryKeys.country.byRegion(this.selectedRegion()),
     queryFn: () => firstValueFrom(this.countryService.searchByRegion(this.selectedRegion())),
     enabled: this.selectedRegion().length > 0,
-  }))
+  }));
 }

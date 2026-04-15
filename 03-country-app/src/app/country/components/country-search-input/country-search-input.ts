@@ -30,6 +30,7 @@ export class CountrySearchInput implements OnDestroy {
     this.inputValue.set(value);
 
     clearTimeout(this.debounceTimeout);
+
     this.debounceTimeout = setTimeout(() => {
       const term = value.trim();
       if (!term) return;
