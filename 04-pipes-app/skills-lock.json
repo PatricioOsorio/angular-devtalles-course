@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "daisyui-5": {
+      "source": "nenorrell/skills",
+      "sourceType": "github",
+      "computedHash": "f8f9ede7e46dc79ad3b247f49e992d3cd50ac547124094b6a89ee812e4f5c760"
+    }
+  }
+}

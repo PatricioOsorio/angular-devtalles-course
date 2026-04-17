@@ -1,0 +1,4 @@
+@utility page {
+  @apply mx-auto w-full max-w-6xl ;
+  @apply flex flex-col gap-4;
+}
