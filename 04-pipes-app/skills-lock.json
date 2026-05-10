@@ -5,6 +5,12 @@
       "source": "nenorrell/skills",
       "sourceType": "github",
       "computedHash": "f8f9ede7e46dc79ad3b247f49e992d3cd50ac547124094b6a89ee812e4f5c760"
+    },
+    "design-md": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "skillPath": "skills/design-md/SKILL.md",
+      "computedHash": "d3a4c7d2f2715a33662c8b06ffc16035d01965a8b4ed81c2958fb22ae94760f8"
     }
   }
 }
