@@ -1,0 +1,24 @@
+<nav class="site-nav" aria-label="Primary navigation">
+  <div class="sn__bar">
+    <a class="sn__brand" routerLink="/basic" aria-label="Pipes App, ir a Basic Pipes">
+      <span class="sn__eyebrow">Angular pipes lab</span>
+      <span class="sn__title">Pipes App</span>
+    </a>
+
+    <ul class="sn__list">
+      @for (route of routes; track route.path) {
+        <li class="sn__item">
+          <a
+            class="sn__link"
+            [routerLink]="route.path"
+            routerLinkActive="sn__link--active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ariaCurrentWhenActive="page"
+          >
+            {{ route.title }}
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</nav>

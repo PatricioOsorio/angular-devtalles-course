@@ -3,10 +3,72 @@
 @plugin 'daisyui' {
   themes:
     light --default,
-    dracula --prefersdark;
+    dark --prefersdark;
 }
 
 @import './base/base.css';
 @import './base/typography.css';
 
 @import './utilities/layout.css';
+
+@layer base {
+  body {
+    @apply bg-(--apple-canvas) text-(--apple-ink);
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply min-h-dvh bg-(--apple-canvas);
+  }
+
+  .as__content {
+    @apply mx-auto w-full max-w-6xl px-4 py-6 pb-12 md:px-6 md:py-8 md:pb-16;
+  }
+
+  .site-nav {
+    @apply sticky top-0 z-40 border-b backdrop-blur-xl;
+    background: color-mix(in srgb, var(--apple-canvas-parchment) 92%, transparent);
+    border-bottom-color: var(--apple-divider-soft);
+  }
+
+  .sn__bar {
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-3 md:flex-row md:items-center md:justify-between md:px-6 md:py-4;
+  }
+
+  .sn__brand {
+    @apply inline-flex flex-col gap-0.5 no-underline text-(--apple-ink);
+  }
+
+  .sn__eyebrow {
+    @apply text-xs uppercase leading-none tracking-[-0.12px] text-(--apple-body-muted);
+  }
+
+  .sn__title {
+    @apply text-[17px] leading-[1.24] font-semibold tracking-[-0.224px];
+  }
+
+  .sn__list {
+    @apply flex flex-wrap gap-2 md:justify-end;
+  }
+
+  .sn__item {
+    @apply list-none;
+  }
+
+  .sn__link {
+    @apply inline-flex min-h-8 items-center justify-center rounded-full border border-transparent px-3.5 py-2 no-underline text-(--apple-ink-muted-80) transition duration-200 ease-out;
+    @apply hover:-translate-y-px hover:text-(--apple-ink);
+  }
+
+  .sn__link:focus-visible {
+    @apply outline outline-2 outline-offset-2;
+    outline-color: var(--apple-primary-focus);
+  }
+
+  .sn__link--active {
+    @apply text-(--apple-primary);
+    border-color: color-mix(in srgb, var(--apple-primary) 24%, transparent);
+    background: color-mix(in srgb, var(--apple-primary) 10%, transparent);
+  }
+}
