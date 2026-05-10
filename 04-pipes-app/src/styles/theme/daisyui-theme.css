@@ -44,6 +44,43 @@
 
   --depth: 0;
   --noise: 0;
+
+  /* Apple Design System - Brand & Accent Colors */
+  --apple-primary: oklch(62% 0.21 257);
+  --apple-primary-focus: oklch(65% 0.18 251);
+  --apple-primary-on-dark: oklch(71% 0.19 257);
+
+  /* Apple Design System - Surface Colors (Light) */
+  --apple-canvas: oklch(99% 0.002 255);
+  --apple-canvas-parchment: oklch(96.5% 0.002 255);
+  --apple-surface-pearl: oklch(98% 0.002 255);
+
+  /* Apple Design System - Text Colors */
+  --apple-ink: oklch(11% 0.004 250);
+  --apple-body: oklch(11% 0.004 250);
+  --apple-body-on-dark: oklch(99% 0.002 255);
+  --apple-body-muted: oklch(80% 0.006 255);
+  --apple-ink-muted-80: oklch(20% 0.006 250);
+  --apple-ink-muted-48: oklch(48% 0.007 255);
+
+  /* Apple Design System - Borders & Dividers */
+  --apple-divider-soft: oklch(94% 0.002 255);
+  --apple-hairline: oklch(88% 0.002 255);
+
+  /* Apple Design System - Dark Tile Surfaces */
+  --apple-surface-tile-1: oklch(16% 0.008 250);
+  --apple-surface-tile-2: oklch(17% 0.008 250);
+  --apple-surface-tile-3: oklch(15% 0.007 250);
+  --apple-surface-black: oklch(0% 0 0);
+  --apple-surface-chip-translucent: oklch(82% 0.006 255);
+
+  /* Apple Design System - Shadows */
+  --apple-shadow-product: 0 3px 5px 0 rgba(0, 0, 0, 0.22);
+
+  /* Apple Design System - Typography Scales */
+  --apple-tracking-tight: -0.28px;
+  --apple-tracking-tighter: -0.374px;
+  --apple-tracking-normal: 0.196px;
 }
 
 @plugin 'daisyui/theme' {
@@ -92,4 +129,41 @@
 
   --depth: 0;
   --noise: 0;
+
+  /* Apple Design System - Brand & Accent Colors (Dark) */
+  --apple-primary: oklch(71% 0.16 257);
+  --apple-primary-focus: oklch(73% 0.15 251);
+  --apple-primary-on-dark: oklch(74% 0.18 257);
+
+  /* Apple Design System - Surface Colors (Dark) */
+  --apple-canvas: oklch(21% 0.01 255);
+  --apple-canvas-parchment: oklch(25% 0.012 255);
+  --apple-surface-pearl: oklch(30% 0.012 255);
+
+  /* Apple Design System - Text Colors (Dark) */
+  --apple-ink: oklch(93% 0.005 255);
+  --apple-body: oklch(93% 0.005 255);
+  --apple-body-on-dark: oklch(93% 0.005 255);
+  --apple-body-muted: oklch(70% 0.008 255);
+  --apple-ink-muted-80: oklch(75% 0.006 255);
+  --apple-ink-muted-48: oklch(60% 0.007 255);
+
+  /* Apple Design System - Borders & Dividers (Dark) */
+  --apple-divider-soft: oklch(30% 0.008 255);
+  --apple-hairline: oklch(35% 0.01 255);
+
+  /* Apple Design System - Dark Tile Surfaces (Dark mode) */
+  --apple-surface-tile-1: oklch(22% 0.01 250);
+  --apple-surface-tile-2: oklch(24% 0.012 250);
+  --apple-surface-tile-3: oklch(20% 0.008 250);
+  --apple-surface-black: oklch(8% 0.002 255);
+  --apple-surface-chip-translucent: oklch(40% 0.008 255);
+
+  /* Apple Design System - Shadows (Dark) */
+  --apple-shadow-product: 0 3px 5px 0 rgba(0, 0, 0, 0.5);
+
+  /* Apple Design System - Typography Scales */
+  --apple-tracking-tight: -0.28px;
+  --apple-tracking-tighter: -0.374px;
+  --apple-tracking-normal: 0.196px;
 }
