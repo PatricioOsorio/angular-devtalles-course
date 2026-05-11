@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Apple
-description: A photography-first interface that turns marketing into a museum gallery. Edge-to-edge product tiles alternate light and dark canvases, framed by SF Pro Display headlines with negative letter-spacing and a single Action Blue interactive color. UI chrome recedes so the product can speak — no decorative gradients, no shadows on chrome, only the one signature drop-shadow under product imagery resting on a surface. Implemented using DaisyUI 5 tokens for consistency.
+description: A translucent, photography-first interface built to feel like Apple hardware and Apple web chrome. The system uses SF Pro Display/Text, one Action Blue accent, frosted navigation, soft parchment canvases, hairline borders, and subtle blur instead of heavy framing. UI chrome stays quiet so content and motion feel premium, airy, and unmistakably Apple.
 
 colors:
   primary: var(--apple-primary)
@@ -283,11 +283,13 @@ components:
 
 ## Overview
 
-Apple's web presence is a masterclass in **reverent product photography framed by near-invisible UI**. Every page is a stack of edge-to-edge product "tiles" — alternating light and dark canvases, each centered on a hero headline, a one-line tagline, two tiny blue pill CTAs, and an impossibly crisp product render. Nothing competes with the product. Typography is confident but quiet; color is either pure white, an off-white parchment, or a near-black tile; interactive elements are a single, quiet blue.
+Apple's feel comes from restraint plus material precision. The interface should read as **glass, paper, and polished metal** stacked on top of a calm photographic canvas. Content should breathe. Chrome should feel translucent. Headlines should feel carved, not bolded. Actions should be obvious, but never loud.
 
-Density is unusually low even by contemporary SaaS standards. Each tile occupies roughly one viewport, and there is no decorative chrome — no borders, no gradients, no decorative frames, no shadows on headlines. Elevation appears only when a product image rests on a surface (a single soft drop-shadow for visual weight). The result is a catalog that feels more like a museum gallery: the wall disappears and the artifact takes over.
+The app should not look like a generic dashboard with borders. It should feel closer to an Apple product page or Apple Store educational surface: a frosted top bar, soft off-white canvases, quietly rounded pills, hairline separators, and a single saturated blue used only for interaction. Cards exist, but they should feel like light utility surfaces, not boxed widgets.
 
-Store and shop surfaces retain the same chassis but switch modes. The product configurator (iPhone 17 Pro, accessories grid) introduces a tight grid of white utility cards at 18px radius with a thin border, paired with a persistent thin sub-nav strip. The environment page leans darker and more editorial. Across all five surfaces the typographic system, spacing rhythm, and the single blue accent are consistent — this is one design language expressed at different volumes.
+The rhythm is simple: airy hero, supportive utility panel, quiet nav, minimal chrome, and one accent color. When a stronger focal point is needed, the system should use material change first — translucency, blur, parchment, or dark tile — before adding more border or shadow.
+
+Store and shop surfaces keep the same language but switch tone: translucent navigation layers, fuller blur, tighter utility cards, and sharper dark/light contrast. Across all pages the type system, spacing, and blue accent remain consistent. This is one language expressed through different surface volumes.
 
 **Key Characteristics:**
 - Photography-first presentation; UI recedes so the product can speak.
@@ -332,8 +334,14 @@ Store and shop surfaces retain the same chassis but switch modes. The product co
 - **Divider Soft** (`--apple-divider-soft`): The "border" tone on secondary buttons — functions as a ring shadow rather than a hard line. In production, often applied as rgba(0, 0, 0, 0.04).
 - **Hairline** (`--apple-hairline`): The 1px hairline border on store utility cards and configurator chips.
 
+### Material Language
+- **Translucency first.** Treat nav bars, sticky bars, and floating controls as frosted material. Use alpha surfaces and backdrop blur before adding borders.
+- **Blur as structure.** Backdrop blur is not decoration. It is the separator between chrome and content.
+- **Soft atmospheric wash.** If a hero needs depth, use a very subtle background wash or image-driven atmosphere. Never use loud decorative gradients on controls, cards, or text blocks.
+- **Chrome stays quiet.** Heavy shadows, hard outlines, and dense borders are off-brand. Prefer hairlines, surface changes, and spacing.
+
 ### Brand Gradient
-**No decorative gradients.** Atmospheric depth on product photography (the iPhone 17 Pro camera plate, the Apple Watch bands, AirPods reflections) is inherent to the imagery, not a CSS gradient overlay. The environment page's hero uses photographic atmosphere (mountain vista at dawn) but no gradient tokens are defined. Apple is the rare luxury-brand site with zero gradient-based design tokens.
+Use gradients sparingly and only as atmosphere. They belong in backgrounds, hero washes, or photographic treatment, not in buttons, cards, or navigation.
 
 ---
 
@@ -450,12 +458,12 @@ Apple's whitespace is the product's pedestal. Every tile begins with at least 64
 ### Global Navigation
 
 **Key Properties:**
-- Background: var(--apple-surface-black)
-- Text: var(--apple-body-on-dark) using nav-link typography
+- Background: translucent black or frosted parchment depending on page tone, always with blur
+- Text: var(--apple-body-on-dark) or var(--apple-ink) using nav-link typography
 - Height: 44px
-- No shadow; sits flush atop the page.
-- Right-aligned: Search, Bag icons always visible.
-- Mobile: collapses to hamburger at ~834px viewport.
+- No shadow; sits flush and quiet, with only a hairline or translucent divider when needed.
+- Right-aligned controls should remain minimal and precise.
+- Mobile: collapse aggressively and preserve only the essentials.
 
 **Tailwind Implementation:**
 ```html
@@ -470,7 +478,7 @@ Apple's whitespace is the product's pedestal. Every tile begins with at least 64
 ### Sub-Navigation (Frosted)
 
 **Key Properties:**
-- Background: var(--apple-canvas-parchment) at 80% opacity with backdrop blur
+- Background: var(--apple-canvas-parchment) or var(--apple-canvas) at 80% opacity with backdrop blur
 - Sticky positioning below global nav
 - Height: 52px
 - Left: category name in tagline typography
@@ -530,23 +538,25 @@ Apple's whitespace is the product's pedestal. Every tile begins with at least 64
 
 ### Do
 - Use `var(--apple-primary)` (Action Blue) for every interactive element — links, pill CTAs, focus signals — and nothing else. The single accent is non-negotiable.
-- Set headlines in hero-display or display-lg with negative letter-spacing (var(--apple-tracking-tight) → var(--apple-tracking-tighter)) to get the signature "Apple tight" cadence.
-- Run body copy at body typography (17px / 400 / 1.47 / var(--apple-tracking-tighter)) — not 16px. The extra pixel defines the brand's reading pace.
-- Alternate product-tile-light (or parchment) and product-tile-dark for full-bleed section rhythm. The color change IS the divider.
-- Reserve rounded pill for the primary blue CTA and any other element that should read as an "action" (configurator chips, search input, sticky bar CTA).
-- Apply the single product-shadow (var(--apple-shadow-product)) only to product renders resting on a surface — never on cards, buttons, or text.
-- Use `transform: scale(0.95)` as the active/press state on every button — it's the system-wide micro-interaction.
-- Keep the global nav var(--apple-surface-black) (true black) — it's the only place pure black appears on most pages.
+- Set headlines in hero-display or display-lg with negative letter-spacing (var(--apple-tracking-tight) → var(--apple-tracking-tighter)) to get the signature Apple tight cadence.
+- Run body copy at 17px / 400 / 1.47. The extra pixel and generous leading are part of the premium feel.
+- Prefer translucency and blur for nav, sticky bars, and floating controls before introducing borders.
+- Alternate canvas, parchment, and dark tile to create rhythm. Material change should come before decorative chrome.
+- Reserve rounded pill for primary actions and action chips. It should read as an affordance, not generic softness.
+- Apply the single product-shadow (`--apple-shadow-product`) only to product renders resting on a surface — never on cards, buttons, or text.
+- Use `transform: scale(0.95)` as the active/press state on buttons.
+- Keep color relationships muted and deliberate. Most surfaces should feel off-white, parchment, or near-black, never saturated.
 
 ### Don't
-- Don't introduce a second accent color; every "click me" signal is var(--apple-primary) (Action Blue).
+- Don't introduce a second accent color; every click signal is var(--apple-primary) (Action Blue).
 - Don't add shadows to cards, buttons, or text — shadow is reserved for product imagery.
-- Don't use gradients as decorative backgrounds; atmosphere comes from photography.
-- Don't set body copy at weight 500 — Apple's ladder is 300 / 400 / 600 / 700, with 500 deliberately absent. Body is always 400; strong inline is 600; display is 600.
-- Don't round full-bleed tiles — tiles are rectangular and edge-to-edge; the color change is the divider.
-- Don't tighten line-height below 1.47 for body copy — the editorial leading is part of the brand.
-- Don't mix radii grammars — use sm for compact utility, lg for utility cards, pill for pills, and nothing in between (except the rare md Pearl Button).
-- Don't use var(--apple-primary-on-dark) (Sky Link Blue) on light surfaces — it's the dark-tile-only variant. Action Blue is for light surfaces.
+- Don't use hard opaque fills for chrome when a frosted layer can work.
+- Don't use loud gradients as UI decoration. If a gradient exists, it must feel like atmosphere, not UI skin.
+- Don't set body copy at weight 500 — the ladder is 300 / 400 / 600 / 700, with 500 deliberately absent.
+- Don't round full-bleed tiles — tiles are rectangular and edge-to-edge; the material change is the divider.
+- Don't tighten line-height below 1.47 for body copy.
+- Don't mix radii grammars — use sm for compact utility, lg for utility cards, pill for pills, and nothing in between except rare md capsules.
+- Don't use `--apple-primary-on-dark` on light surfaces — it belongs to dark tiles and dark chrome only.
 
 ---
 

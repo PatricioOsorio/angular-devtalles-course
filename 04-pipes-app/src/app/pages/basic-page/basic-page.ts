@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-basic-page',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './basic-page.html',
-  styles: ``,
+  styleUrl: './basic-page.css',
 })
 export default class BasicPage {}

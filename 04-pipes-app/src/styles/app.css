@@ -14,61 +14,254 @@
 @layer base {
   body {
     @apply bg-(--apple-canvas) text-(--apple-ink);
+    font-family: SF Pro Text, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+    background-color: var(--apple-canvas);
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--apple-primary) 18%, transparent);
+    color: var(--apple-ink);
   }
 }
 
 @layer components {
   .app-shell {
     @apply min-h-dvh bg-(--apple-canvas);
+    background:
+      radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--apple-primary) 8%, transparent), transparent 34%),
+      linear-gradient(180deg, color-mix(in srgb, var(--apple-canvas-parchment) 32%, transparent) 0%, transparent 18%),
+      var(--apple-canvas);
   }
 
   .as__content {
     @apply mx-auto w-full max-w-6xl px-4 py-6 pb-12 md:px-6 md:py-8 md:pb-16;
   }
 
-  .site-nav {
-    @apply sticky top-0 z-40 border-b backdrop-blur-xl;
-    background: color-mix(in srgb, var(--apple-canvas-parchment) 92%, transparent);
-    border-bottom-color: var(--apple-divider-soft);
+  .home-page {
+    position: relative;
   }
 
-  .sn__bar {
-    @apply mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-3 md:flex-row md:items-center md:justify-between md:px-6 md:py-4;
+  .hp__hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 34px;
+    border: 1px solid var(--apple-divider-soft);
+    padding: 36px;
+    background:
+      linear-gradient(145deg, color-mix(in srgb, var(--apple-canvas-parchment) 96%, transparent), color-mix(in srgb, var(--apple-canvas) 88%, transparent)),
+      color-mix(in srgb, var(--apple-canvas-parchment) 92%, transparent);
+    backdrop-filter: blur(24px) saturate(180%);
+    box-shadow: 0 24px 90px color-mix(in srgb, var(--apple-ink) 10%, transparent);
   }
 
-  .sn__brand {
-    @apply inline-flex flex-col gap-0.5 no-underline text-(--apple-ink);
+  .hp__hero::before {
+    content: '';
+    position: absolute;
+    inset: auto -12% -38% auto;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--apple-primary) 16%, transparent), transparent 70%);
+    filter: blur(8px);
+    opacity: 0.95;
+    pointer-events: none;
   }
 
-  .sn__eyebrow {
-    @apply text-xs uppercase leading-none tracking-[-0.12px] text-(--apple-body-muted);
+  .hp__eyebrow {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: -0.12px;
+    text-transform: uppercase;
+    color: var(--apple-body-muted);
   }
 
-  .sn__title {
-    @apply text-[17px] leading-[1.24] font-semibold tracking-[-0.224px];
+  .hp__title {
+    margin-top: 12px;
+    max-width: 10ch;
+    font-family: SF Pro Display, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: clamp(3.4rem, 7.4vw, 6.2rem);
+    line-height: 0.92;
+    letter-spacing: var(--apple-tracking-tight);
+    font-weight: 600;
+    text-wrap: balance;
   }
 
-  .sn__list {
-    @apply flex flex-wrap gap-2 md:justify-end;
+  .hp__lead {
+    margin-top: 18px;
+    max-width: 36rem;
+    font-size: 18px;
+    line-height: 1.7;
+    letter-spacing: var(--apple-tracking-tighter);
+    color: var(--apple-body-muted);
   }
 
-  .sn__item {
-    @apply list-none;
+  .hp__actions {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
-  .sn__link {
-    @apply inline-flex min-h-8 items-center justify-center rounded-full border border-transparent px-3.5 py-2 no-underline text-(--apple-ink-muted-80) transition duration-200 ease-out;
-    @apply hover:-translate-y-px hover:text-(--apple-ink);
+  .hp__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.12px;
+    text-decoration: none;
+    transition:
+      transform 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease;
   }
 
-  .sn__link:focus-visible {
-    @apply outline outline-2 outline-offset-2;
-    outline-color: var(--apple-primary-focus);
+  .hp__action:hover {
+    transform: translateY(-1px);
   }
 
-  .sn__link--active {
-    @apply text-(--apple-primary);
-    border-color: color-mix(in srgb, var(--apple-primary) 24%, transparent);
+  .hp__action--primary {
+    background: var(--apple-primary);
+    color: var(--apple-primary-on-dark);
+  }
+
+  .hp__action--primary:hover {
+    background: color-mix(in srgb, var(--apple-primary) 92%, white);
+  }
+
+  .hp__action--secondary {
+    border: 1px solid color-mix(in srgb, var(--apple-primary) 80%, white);
+    color: var(--apple-primary);
+    background: color-mix(in srgb, var(--apple-surface-pearl) 72%, transparent);
+    backdrop-filter: blur(14px) saturate(180%);
+  }
+
+  .hp__action--secondary:hover {
     background: color-mix(in srgb, var(--apple-primary) 10%, transparent);
+  }
+
+  .hp__panel {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+    padding-top: 18px;
+  }
+
+  .hp__card {
+    position: relative;
+    border-radius: 30px;
+    border: 1px solid var(--apple-hairline);
+    padding: 24px;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--apple-surface-pearl) 92%, transparent), color-mix(in srgb, var(--apple-canvas) 88%, transparent));
+    backdrop-filter: blur(18px) saturate(180%);
+  }
+
+  .hp__card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset 0 1px 0 color-mix(in srgb, white 60%, transparent);
+  }
+
+  .hp__card-label {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: -0.12px;
+    text-transform: uppercase;
+    color: var(--apple-body-muted);
+  }
+
+  .hp__card-title {
+    margin-top: 10px;
+    font-family: SF Pro Display, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 24px;
+    line-height: 1.1;
+    letter-spacing: var(--apple-tracking-tighter);
+    font-weight: 600;
+    color: var(--apple-ink);
+  }
+
+  .hp__card-text {
+    margin-top: 12px;
+    font-size: 17px;
+    line-height: 1.56;
+    letter-spacing: var(--apple-tracking-tighter);
+    color: var(--apple-body-muted);
+  }
+
+  .hp__list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .hp__item {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 0 18px;
+    border-radius: 20px;
+    border: 1px solid var(--apple-hairline);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.12px;
+    color: var(--apple-ink);
+    background: color-mix(in srgb, var(--apple-canvas) 78%, transparent);
+    backdrop-filter: blur(12px) saturate(160%);
+  }
+
+  .hp__item:nth-child(odd) {
+    transform: translateX(8px);
+  }
+
+  .hp__item:nth-child(even) {
+    transform: translateX(-8px);
+  }
+
+  @media (max-width: 834px) {
+    .home-page {
+      grid-template-columns: 1fr;
+    }
+
+    .hp__hero {
+      padding: 28px;
+    }
+
+    .hp__panel {
+      padding-top: 0;
+    }
+
+    .hp__item {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .home-page::before,
+    .home-page::after {
+      inset: -16px;
+    }
+
+    .hp__hero {
+      padding: 22px;
+      border-radius: 26px;
+    }
+
+    .hp__title {
+      font-size: clamp(2.8rem, 16vw, 4.2rem);
+    }
+
+    .hp__card {
+      padding: 20px;
+      border-radius: 24px;
+    }
   }
 }
