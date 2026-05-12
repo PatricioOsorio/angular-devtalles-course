@@ -1,35 +1,29 @@
-<section class="home-page">
-	<div class="hp__hero">
-		<p class="hp__eyebrow">Curso Angular</p>
-		<h1 class="hp__title">Pipes App</h1>
-		<p class="hp__lead">
-			Aprende los pipes de Angular con ejemplos claros, prácticos y listos para explorar desde
-			cero.
-		</p>
+<article class="home-page">
+  <section class="hp__hero">
+    <p class="hp__eyebrow">Curso Angular</p>
+    <h1 class="hp__title">Pipes Básicos</h1>
+    <p class="hp__lead">
+      Pipes incluidos en Angular para transformar datos en plantillas. Aprende a usar
+    </p>
+  </section>
 
-		<div class="hp__actions">
-			<a class="hp__action hp__action--primary" routerLink="/basic">Empezar</a>
-			<a class="hp__action hp__action--secondary" routerLink="/custom">
-				Ver pipes custom
-			</a>
-		</div>
-	</div>
+  <section class="stats shadow w-full">
+    <div class="stat">
+      <div class="stat-title">Lowercase Pipe</div>
+      <div class="stat-value">{{ nameUpper() | lowercase }}</div>
+      <div class="stat-desc">{{ nameUpper() }}</div>
+    </div>
 
-	<div class="hp__panel">
-		<article class="hp__card">
-			<p class="hp__card-label">Contenido</p>
-			<h2 class="hp__card-title">Cuatro rutas para dominar pipes</h2>
-			<p class="hp__card-text">
-				Recorre los ejemplos básicos, numéricos, custom y uncommon con navegación rápida y foco
-				en la práctica.
-			</p>
-		</article>
+    <div class="stat">
+      <div class="stat-title">Uppercase Pipe</div>
+      <div class="stat-value">{{ nameUpper() | uppercase }}</div>
+      <div class="stat-desc">{{ nameUpper() }}</div>
+    </div>
 
-		<ul class="hp__list">
-			<li class="hp__item">Basic pipes</li>
-			<li class="hp__item">Number pipes</li>
-			<li class="hp__item">Custom pipes</li>
-			<li class="hp__item">Uncommon pipes</li>
-		</ul>
-	</div>
-</section>
+    <div class="stat">
+      <div class="stat-title">Title Case Pipe</div>
+      <div class="stat-value">{{ fullName() | titlecase }}</div>
+      <div class="stat-desc">{{ fullName() }}</div>
+    </div>
+  </section>
+</article>

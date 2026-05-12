@@ -6,16 +6,73 @@
 
 @layer components {
   .home-page {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-    align-items: start;
+    position: relative;
   }
 
-  @media (max-width: 834px) {
-    .home-page {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
+  .hp__hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 34px;
+    border: 1px solid var(--apple-divider-soft);
+    padding: 36px;
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--apple-canvas-parchment) 96%, transparent),
+        color-mix(in srgb, var(--apple-canvas) 88%, transparent)
+      ),
+      color-mix(in srgb, var(--apple-canvas-parchment) 92%, transparent);
+    backdrop-filter: blur(24px) saturate(180%);
+    box-shadow: 0 24px 90px color-mix(in srgb, var(--apple-ink) 10%, transparent);
+  }
+
+  .hp__hero::before {
+    content: '';
+    position: absolute;
+    inset: auto -12% -38% auto;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--apple-primary) 16%, transparent),
+      transparent 70%
+    );
+    filter: blur(8px);
+    opacity: 0.95;
+    pointer-events: none;
+  }
+
+  .hp__eyebrow {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: -0.12px;
+    text-transform: uppercase;
+    color: var(--apple-body-muted);
+  }
+
+  .hp__title {
+    margin-top: 12px;
+    max-width: 10ch;
+    font-family:
+      SF Pro Display,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: clamp(3.4rem, 7.4vw, 6.2rem);
+    line-height: 0.92;
+    letter-spacing: var(--apple-tracking-tight);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  .hp__lead {
+    margin-top: 18px;
+    max-width: 36rem;
+    font-size: 18px;
+    line-height: 1.7;
+    letter-spacing: var(--apple-tracking-tighter);
+    color: var(--apple-body-muted);
   }
 }
