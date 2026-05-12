@@ -1,7 +1,7 @@
-
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
 ## Important specific requirements for this project
+
 - Always use the `/caveman` skill for all chat interactions, even if the user does not specify it.
 
 ## TypeScript Best Practices
@@ -57,25 +57,9 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
 
-## Design System Standards
-
-All UI components must adhere to the cohesive design system defined in [DESIGN.md](DESIGN.md). This ensures consistency across the application and maintains the photography-first Apple design philosophy.
-
 ### Design Token System
 
 **Golden Rule**: Never hardcode color, typography, or spacing values. Always use CSS variables from `src/styles/theme/daisyui-theme.css`.
-
-#### Required CSS Variables by Category
-
-| Category | Variables | Usage |
-|----------|-----------|-------|
-| **Brand** | `--apple-primary`, `--apple-primary-focus`, `--apple-primary-on-dark` | Action/link colors (Action Blue variants) |
-| **Surfaces** | `--apple-canvas`, `--apple-canvas-parchment`, `--apple-surface-tile-[1-3]` | Background layers with depth |
-| **Text** | `--apple-ink`, `--apple-body`, `--apple-body-muted`, `--apple-ink-muted-80` | Text colors (never use #000 or #fff) |
-| **Borders** | `--apple-divider-soft`, `--apple-hairline` | Separators and dividers |
-| **Shadows** | `--apple-shadow-product` | Only for product photography, never decorative |
-| **Spacing** | 8px base unit system | All margins/padding multiples of 8px |
-| **Typography** | SF Pro Display/Text stacks | Font families (system-ui fallback) |
 
 ### DaisyUI + Tailwind 4 Integration
 
@@ -84,29 +68,3 @@ All UI components must adhere to the cohesive design system defined in [DESIGN.m
 - **Theme location**: `src/styles/theme/daisyui-theme.css`
 
 The theme automatically switches between light (`app-light`) and dark (`app-dark`) themes based on `prefers-color-scheme`.
-
-### Component Specifications
-
-Reference [DESIGN.md](DESIGN.md) for detailed specs of:
-- Buttons (primary, secondary, tertiary variants)
-- Navigation patterns (navbar, sidebar, breadcrumbs)
-- Cards and surface tiles
-- Forms and inputs
-- Typography hierarchy (56px → 10px scale)
-- Responsive breakpoints (1440, 1068, 834, 640, 419)
-
-### Key Design Principles
-
-1. **Photography-First**: Content dominates; minimal decoration
-2. **Single Accent Color**: Action Blue (`--apple-primary`) for all interactive elements
-3. **Surface Tiles**: Rhythm created through `--apple-surface-tile-*` alternation
-4. **Type Hierarchy**: 16-point scale with intentional weight ladder (no 500)
-
-See [DESIGN.md](DESIGN.md) for complete context and examples.
-
-### Single Source of Truth
-
-- **Theme tokens** defined in: `src/styles/theme/daisyui-theme.css`
-- **Documentation** maintained in: `DESIGN.md`
-- When updating design, modify CSS file first, then verify docs reflect changes
-
