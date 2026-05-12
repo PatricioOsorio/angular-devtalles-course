@@ -1,29 +1,75 @@
-<article class="home-page">
-  <section class="hp__hero">
-    <p class="hp__eyebrow">Curso Angular</p>
-    <h1 class="hp__title">Pipes Básicos</h1>
-    <p class="hp__lead">
-      Pipes incluidos en Angular para transformar datos en plantillas. Aprende a usar
-    </p>
+<article class="pipes-showcase">
+  <section class="ps__hero" aria-labelledby="basic-page-title">
+    <div class="ps__hero-decoration"></div>
+
+    <div class="ps__hero-content">
+      <p class="ps__eyebrow">Curso Angular · Pipes</p>
+
+      <h1 id="basic-page-title" class="ps__title">
+        Transformación de Datos
+      </h1>
+
+      <p class="ps__lead">
+        Domina los pipes de Angular: herramientas poderosas para transformar datos
+        directamente en tus plantillas HTML. Explora cada uno con ejemplos interactivos.
+      </p>
+    </div>
   </section>
 
-  <section class="stats shadow w-full">
-    <div class="stat">
-      <div class="stat-title">Lowercase Pipe</div>
-      <div class="stat-value">{{ nameUpper() | lowercase }}</div>
-      <div class="stat-desc">{{ nameUpper() }}</div>
+  <section class="ps__showcase" aria-label="Demostración de pipes">
+    <div class="ps__intro-panel">
+      <h2 class="ps__intro-title">Dato Original</h2>
+      <p class="ps__intro-source">{{ nameUpper() }}</p>
     </div>
 
-    <div class="stat">
-      <div class="stat-title">Uppercase Pipe</div>
-      <div class="stat-value">{{ nameUpper() | uppercase }}</div>
-      <div class="stat-desc">{{ nameUpper() }}</div>
-    </div>
+    <div class="ps__pipes-grid">
+      <article class="ps__pipe-card">
+        <header class="ps__card-header">
+          <h3 class="ps__card-title">Lowercase</h3>
+          <span class="ps__card-badge">Minúsculas</span>
+        </header>
 
-    <div class="stat">
-      <div class="stat-title">Title Case Pipe</div>
-      <div class="stat-value">{{ fullName() | titlecase }}</div>
-      <div class="stat-desc">{{ fullName() }}</div>
+        <div class="ps__card-output">
+          <code class="ps__code-label">lowercase pipe</code>
+          <output class="ps__code-result">{{ nameUpper() | lowercase }}</output>
+        </div>
+
+        <p class="ps__card-description">
+          Convierte todo el texto a minúsculas.
+        </p>
+      </article>
+
+      <article class="ps__pipe-card">
+        <header class="ps__card-header">
+          <h3 class="ps__card-title">Uppercase</h3>
+          <span class="ps__card-badge">Mayúsculas</span>
+        </header>
+
+        <div class="ps__card-output">
+          <code class="ps__code-label">uppercase pipe</code>
+          <output class="ps__code-result">{{ nameUpper() | uppercase }}</output>
+        </div>
+
+        <p class="ps__card-description">
+          Convierte todo el texto a mayúsculas.
+        </p>
+      </article>
+
+      <article class="ps__pipe-card">
+        <header class="ps__card-header">
+          <h3 class="ps__card-title">Titlecase</h3>
+          <span class="ps__card-badge">Primera Mayúscula</span>
+        </header>
+
+        <div class="ps__card-output">
+          <code class="ps__code-label">titlecase pipe</code>
+          <output class="ps__code-result">{{ fullName() | titlecase }}</output>
+        </div>
+
+        <p class="ps__card-description">
+          Convierte la primera letra de cada palabra en mayúscula.
+        </p>
+      </article>
     </div>
   </section>
 </article>

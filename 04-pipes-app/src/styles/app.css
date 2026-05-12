@@ -10,32 +10,3 @@
 @import './base/typography.css';
 
 @import './utilities/layout.css';
-
-@layer base {
-  body {
-    @apply bg-(--apple-canvas) text-(--apple-ink);
-    font-family: SF Pro Text, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: geometricPrecision;
-    background-color: var(--apple-canvas);
-  }
-
-  ::selection {
-    background: color-mix(in srgb, var(--apple-primary) 18%, transparent);
-    color: var(--apple-ink);
-  }
-}
-
-@layer components {
-  .app-shell {
-    @apply min-h-dvh bg-(--apple-canvas);
-    background:
-      radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--apple-primary) 8%, transparent), transparent 34%),
-      linear-gradient(180deg, color-mix(in srgb, var(--apple-canvas-parchment) 32%, transparent) 0%, transparent 18%),
-      var(--apple-canvas);
-  }
-
-  .as__content {
-    @apply mx-auto w-full max-w-6xl px-4 py-6 pb-12 md:px-6 md:py-8 md:pb-16;
-  }
-}

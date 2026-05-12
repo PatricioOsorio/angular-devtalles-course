@@ -1,134 +1,66 @@
+@reference '#styles/app.css';
+
 :host {
-  display: block;
+	@apply block;
 }
 
-.site-nav {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  border-bottom: 1px solid var(--apple-divider-soft);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--apple-canvas-parchment) 84%, transparent), color-mix(in srgb, var(--apple-canvas) 70%, transparent)),
-    color-mix(in srgb, var(--apple-canvas-parchment) 76%, transparent);
-  backdrop-filter: blur(26px) saturate(180%);
-  -webkit-backdrop-filter: blur(26px) saturate(180%);
-}
+@layer components {
+	.site-nav {
+		@apply sticky top-0 z-40 border-b border-base-300/80;
+		@apply bg-base-100/85 shadow-sm backdrop-blur-xl;
+	}
 
-.site-nav::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--apple-primary) 18%, transparent), transparent);
-  opacity: 0.85;
-  pointer-events: none;
-}
+	.sn__bar {
+		@apply page;
+		@apply max-w-7xl gap-4 px-4 py-3 sm:px-6;
+		@apply md:flex-row md:items-center md:justify-between;
+	}
 
-.sn__bar {
-  width: min(100%, 72rem);
-  margin: 0 auto;
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+	.sn__brand {
+		@apply inline-flex w-fit flex-col rounded-xl px-2 py-1;
+		@apply transition-all duration-300;
+	}
 
-.sn__brand {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 3px;
-  align-self: flex-start;
-  text-decoration: none;
-  color: var(--apple-ink);
-}
+	.sn__brand:hover {
+		@apply bg-primary/6;
+	}
 
-.sn__brand:hover .sn__title {
-  color: var(--apple-primary);
-}
+	.sn__brand:focus-visible {
+		@apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-base-100;
+	}
 
-.sn__eyebrow {
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--apple-body-muted);
-  opacity: 0.9;
-}
+	.sn__eyebrow {
+		@apply text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-base-content/55;
+	}
 
-.sn__title {
-  font-family: SF Pro Display, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 17px;
-  line-height: 1.18;
-  font-weight: 600;
-  letter-spacing: var(--apple-tracking-tighter);
-  transition: color 180ms ease;
-}
+	.sn__title {
+		@apply text-xl font-black leading-none tracking-tight text-base-content;
+	}
 
-.sn__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
+	.sn__list {
+		@apply -mx-1 flex w-[calc(100%+0.5rem)] items-center gap-2 overflow-x-auto pb-1;
+		@apply md:mx-0 md:w-auto md:flex-wrap md:overflow-visible md:pb-0;
+	}
 
-.sn__item {
-  list-style: none;
-}
+	.sn__item {
+		@apply list-none;
+	}
 
-.sn__link {
-  display: inline-flex;
-  min-height: 36px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  border: 1px solid transparent;
-  padding: 0 15px;
-  text-decoration: none;
-  font-size: 12px;
-  line-height: 1;
-  font-weight: 600;
-  letter-spacing: -0.12px;
-  color: var(--apple-ink-muted-80);
-  background: color-mix(in srgb, var(--apple-surface-chip-translucent) 18%, transparent);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, white 34%, transparent);
-  transition:
-    transform 180ms ease,
-    background-color 180ms ease,
-    color 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
-}
+	.sn__link {
+		@apply inline-flex items-center rounded-full border border-transparent px-4 py-2 text-sm font-semibold;
+		@apply text-base-content/72 transition-all duration-200;
+		@apply md:hover:-translate-y-px;
+	}
 
-.sn__link:hover {
-  transform: translateY(-1px);
-  color: var(--apple-ink);
-  background: color-mix(in srgb, var(--apple-surface-chip-translucent) 34%, transparent);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, white 52%, transparent);
-}
+	.sn__link:hover {
+		@apply border-base-300 bg-base-200/80 text-base-content;
+	}
 
-.sn__link:focus-visible {
-  outline: 2px solid var(--apple-primary-focus);
-  outline-offset: 2px;
-}
+	.sn__link:focus-visible {
+		@apply outline-none ring-2 ring-primary/50 ring-offset-2 ring-offset-base-100;
+	}
 
-.sn__link--active {
-  color: var(--apple-primary);
-  border-color: color-mix(in srgb, var(--apple-primary) 20%, transparent);
-  background: color-mix(in srgb, var(--apple-primary) 10%, transparent);
-}
-
-@media (min-width: 834px) {
-  .sn__bar {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 24px;
-  }
-
-  .sn__brand {
-    align-self: center;
-  }
-
-  .sn__list {
-    justify-content: flex-end;
-  }
+	.sn__link--active {
+		@apply border-primary/25 bg-primary/13 text-primary ring-1 ring-inset ring-primary/30;
+	}
 }
