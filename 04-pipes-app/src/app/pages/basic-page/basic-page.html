@@ -1,29 +1,34 @@
 <article class="pipes-showcase">
   <section class="ps__hero" aria-labelledby="basic-page-title">
-    <div class="ps__hero-decoration"></div>
+    <div class="ps__hero-decoration" aria-hidden="true"></div>
 
     <div class="ps__hero-content">
       <p class="ps__eyebrow">Curso Angular · Pipes</p>
 
-      <h1 id="basic-page-title" class="ps__title">
-        Transformación de Datos
-      </h1>
+      <h1 id="basic-page-title" class="ps__title">Transformación de Datos</h1>
 
       <p class="ps__lead">
-        Domina los pipes de Angular: herramientas poderosas para transformar datos
-        directamente en tus plantillas HTML. Explora cada uno con ejemplos interactivos.
+        Domina los pipes de Angular: herramientas poderosas para transformar datos directamente en
+        tus plantillas HTML. Explora cada uno con ejemplos interactivos.
       </p>
+
+      <p class="ps__hero-meta">3 pipes base · lowercase · uppercase · titlecase</p>
     </div>
   </section>
 
   <section class="ps__showcase" aria-label="Demostración de pipes">
     <div class="ps__intro-panel">
-      <h2 class="ps__intro-title">Dato Original</h2>
-      <p class="ps__intro-source">{{ nameUpper() }}</p>
+      <div class="ps__intro-copy">
+        <h2 class="ps__intro-title">Dato Original</h2>
+        <p class="ps__intro-source">{{ nameUpper() }}</p>
+      </div>
+      <p class="ps__intro-helper">
+        Observa cómo cada pipe cambia formato y legibilidad sin alterar el valor fuente.
+      </p>
     </div>
 
-    <div class="ps__pipes-grid">
-      <article class="ps__pipe-card">
+    <div class="ps__pipes-grid" role="list">
+      <article class="ps__pipe-card ps__pipe-card--lower" role="listitem">
         <header class="ps__card-header">
           <h3 class="ps__card-title">Lowercase</h3>
           <span class="ps__card-badge">Minúsculas</span>
@@ -34,12 +39,10 @@
           <output class="ps__code-result">{{ nameUpper() | lowercase }}</output>
         </div>
 
-        <p class="ps__card-description">
-          Convierte todo el texto a minúsculas.
-        </p>
+        <p class="ps__card-description">Convierte todo el texto a minúsculas.</p>
       </article>
 
-      <article class="ps__pipe-card">
+      <article class="ps__pipe-card ps__pipe-card--upper" role="listitem">
         <header class="ps__card-header">
           <h3 class="ps__card-title">Uppercase</h3>
           <span class="ps__card-badge">Mayúsculas</span>
@@ -50,12 +53,10 @@
           <output class="ps__code-result">{{ nameUpper() | uppercase }}</output>
         </div>
 
-        <p class="ps__card-description">
-          Convierte todo el texto a mayúsculas.
-        </p>
+        <p class="ps__card-description">Convierte todo el texto a mayúsculas.</p>
       </article>
 
-      <article class="ps__pipe-card">
+      <article class="ps__pipe-card ps__pipe-card--title" role="listitem">
         <header class="ps__card-header">
           <h3 class="ps__card-title">Titlecase</h3>
           <span class="ps__card-badge">Primera Mayúscula</span>
@@ -66,9 +67,7 @@
           <output class="ps__code-result">{{ fullName() | titlecase }}</output>
         </div>
 
-        <p class="ps__card-description">
-          Convierte la primera letra de cada palabra en mayúscula.
-        </p>
+        <p class="ps__card-description">Convierte la primera letra de cada palabra en mayúscula.</p>
       </article>
     </div>
   </section>

@@ -3,6 +3,10 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 ## Important specific requirements for this project
 
 - Always use the `/caveman` skill for all chat interactions, even if the user does not specify it.
+- Always consult `DESIGN.md` as the visual and UI source of truth for design decisions, component styling, and consistency.
+- Before executing any action (code edits, commands, refactors, deletions, installs, or file operations), ask clarifying questions first.
+- Never assume user intent, requirements, scope, or preferences when information is ambiguous or missing.
+- Execute only what the user explicitly confirms, and stop for confirmation again if scope changes.
 
 ## TypeScript Best Practices
 

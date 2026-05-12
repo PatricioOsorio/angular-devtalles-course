@@ -9,87 +9,205 @@
     @apply w-full;
   }
 
-  /* Hero */
   .ps__hero {
-    @apply relative overflow-hidden bg-gradient-to-br from-primary/5 to-base-100 px-4 py-16 sm:py-20 md:py-24;
+    @apply relative overflow-hidden px-4 py-16 sm:py-20 md:py-24;
+    background-image: linear-gradient(
+      145deg,
+      color-mix(in oklab, var(--color-primary) 16%, transparent),
+      color-mix(in oklab, var(--color-base-100) 94%, transparent)
+    );
   }
 
   .ps__hero-decoration {
     @apply absolute inset-0 -z-10;
-    background-image: radial-gradient(circle at 20% 50%, rgba(88, 99, 255, 0.1), transparent 50%),
-                      radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.08), transparent 50%);
+    background-image:
+      radial-gradient(circle at 20% 50%, color-mix(in oklab, var(--color-primary) 20%, transparent), transparent 52%),
+      radial-gradient(circle at 80% 80%, color-mix(in oklab, var(--color-secondary) 14%, transparent), transparent 50%);
   }
 
   .ps__hero-content {
-    @apply relative z-10 mx-auto max-w-3xl text-center;
+    @apply relative z-10 mx-auto max-w-4xl text-center;
   }
 
   .ps__eyebrow {
-    @apply mb-3 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary;
+    @apply mb-3 inline-flex rounded-full border border-primary/22 bg-primary/10 px-3 py-1 text-xs font-bold uppercase text-primary;
+    letter-spacing: 0.11em;
   }
 
   .ps__title {
-    @apply mb-4 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl;
-    letter-spacing: -0.02em;
+    @apply mb-4 text-4xl font-black leading-tight text-base-content sm:text-5xl lg:text-6xl;
+    letter-spacing: var(--apple-tracking-tight);
+    text-wrap: balance;
   }
 
   .ps__lead {
-    @apply mx-auto max-w-2xl text-base leading-relaxed text-base-content/70 sm:text-lg;
+    @apply mx-auto max-w-2xl text-base leading-relaxed text-base-content/80 sm:text-lg;
+    text-wrap: pretty;
   }
 
-  /* Showcase */
+  .ps__hero-meta {
+    @apply mt-5 text-xs font-semibold uppercase text-base-content/66;
+    letter-spacing: 0.12em;
+  }
+
   .ps__showcase {
     @apply mx-auto max-w-7xl px-4 py-12 md:py-16;
   }
 
   .ps__intro-panel {
-    @apply mb-12 rounded-xl border border-base-300 bg-base-100 p-6 sm:p-8 shadow-sm;
+    @apply mb-10 grid gap-4 rounded-box border border-base-300 bg-base-100 p-6 shadow-sm sm:p-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end;
+  }
+
+  .ps__intro-copy {
+    @apply min-w-0;
   }
 
   .ps__intro-title {
-    @apply mb-2 text-xs font-bold uppercase tracking-wide text-base-content/60;
+    @apply mb-2 text-xs font-bold uppercase text-base-content/60;
+    letter-spacing: 0.12em;
   }
 
   .ps__intro-source {
-    @apply text-2xl font-bold text-base-content sm:text-3xl;
+    @apply text-2xl font-black text-base-content sm:text-3xl;
+    letter-spacing: var(--apple-tracking-tighter);
   }
 
-  /* Grid & Cards */
+  .ps__intro-helper {
+    @apply rounded-field border border-base-300 bg-base-200/55 px-4 py-3 text-sm leading-relaxed text-base-content/78;
+  }
+
   .ps__pipes-grid {
-    @apply grid gap-5 sm:grid-cols-2 lg:grid-cols-3;
+    @apply grid gap-5 sm:grid-cols-2 xl:grid-cols-3;
   }
 
   .ps__pipe-card {
-    @apply flex flex-col rounded-lg border border-base-300 bg-base-100 shadow-sm hover:shadow-md hover:border-primary/40 transition-all;
+    @apply flex flex-col overflow-hidden rounded-box border border-base-300 bg-base-100 shadow-sm transition-all duration-300;
+  }
+
+  .ps__pipe-card:hover {
+    @apply -translate-y-0.5 shadow-md;
   }
 
   .ps__card-header {
-    @apply flex items-start justify-between gap-2 border-b border-base-300 bg-base-200/30 px-5 py-4 sm:px-6 sm:py-5;
+    @apply flex items-start justify-between gap-3 border-b border-base-300 bg-base-200/34 px-5 py-4 sm:px-6 sm:py-5;
   }
 
   .ps__card-title {
-    @apply font-bold text-base-content text-lg;
+    @apply text-lg font-bold text-base-content;
   }
 
   .ps__card-badge {
-    @apply rounded-md bg-primary/10 px-2 py-1 text-xs font-semibold text-primary;
+    @apply rounded-field border border-primary/24 bg-primary/10 px-2 py-1 text-xs font-semibold text-primary;
+  }
+
+  .ps__pipe-card--upper {
+    @apply border-secondary/30;
+  }
+
+  .ps__pipe-card--upper .ps__card-badge {
+    @apply border-secondary/26 bg-secondary/12 text-secondary;
+  }
+
+  .ps__pipe-card--title {
+    @apply border-accent/30;
+  }
+
+  .ps__pipe-card--title .ps__card-badge {
+    @apply border-accent/26 bg-accent/14 text-accent-content;
+  }
+
+  .ps__pipe-card--title:hover {
+    @apply border-accent/44;
   }
 
   .ps__card-output {
-    @apply px-5 py-4 sm:px-6 sm:py-5 space-y-2;
+    @apply space-y-2 px-5 py-4 sm:px-6 sm:py-5;
   }
 
   .ps__code-label {
-    @apply text-xs font-mono font-semibold uppercase text-base-content/50;
+    @apply text-xs font-semibold uppercase text-base-content/62;
+    letter-spacing: 0.1em;
   }
 
   .ps__code-result {
-    @apply block rounded-md bg-neutral/5 px-3 py-2 font-mono text-sm font-semibold text-neutral;
+    @apply block rounded-field bg-base-200 px-3 py-2 font-mono text-sm font-semibold text-base-content;
     word-break: break-word;
   }
 
   .ps__card-description {
-    @apply border-t border-base-300 px-5 py-4 sm:px-6 text-sm text-base-content/70 leading-relaxed;
+    @apply border-t border-base-300 px-5 py-4 text-sm leading-relaxed text-base-content/82 sm:px-6;
+  }
+
+  @media (max-width: 39.99rem) {
+    .ps__intro-helper {
+      @apply text-xs;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .ps__hero {
+      background-image: linear-gradient(
+        145deg,
+        color-mix(in oklab, var(--color-primary) 30%, var(--color-base-100) 70%),
+        color-mix(in oklab, var(--color-secondary) 18%, var(--color-base-100) 82%)
+      );
+    }
+
+    .ps__lead {
+      @apply text-base-content/88;
+    }
+
+    .ps__hero-meta,
+    .ps__intro-title,
+    .ps__code-label {
+      @apply text-base-content/76;
+    }
+
+    .ps__intro-panel {
+      @apply border-base-content/18 bg-base-100;
+    }
+
+    .ps__intro-helper {
+      @apply border-base-content/20 bg-base-200/70 text-base-content/88;
+    }
+
+    .ps__pipe-card {
+      @apply border-base-content/20 bg-base-100;
+    }
+
+    .ps__card-header {
+      @apply border-base-content/16 bg-base-200/65;
+    }
+
+    .ps__card-badge {
+      @apply border-primary/40 bg-primary/20 text-primary-content;
+    }
+
+    .ps__pipe-card--upper .ps__card-badge {
+      @apply border-secondary/40 bg-secondary/22 text-secondary-content;
+    }
+
+    .ps__pipe-card--title .ps__card-badge {
+      @apply border-accent/55 bg-accent/30 text-accent;
+    }
+
+    .ps__code-result {
+      @apply bg-neutral text-neutral-content;
+    }
+
+    .ps__card-description {
+      @apply border-base-content/16 text-base-content/86;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ps__pipe-card {
+      @apply transition-none;
+    }
+
+    .ps__pipe-card:hover {
+      @apply translate-y-0;
+    }
   }
 }
 
