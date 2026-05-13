@@ -43,6 +43,10 @@
     .ps__intro-helper {
       @apply text-xs;
     }
+
+    .ps__pipes-grid {
+      @apply grid-cols-1;
+    }
   }
 
   @media (prefers-color-scheme: dark) {

@@ -46,4 +46,69 @@
       />
     </div>
   </section>
+
+  <section class="ps__showcase" aria-label="Demostración de pipes de fecha">
+    <div class="ps__intro-panel">
+      <div class="ps__intro-copy">
+        <h2 class="ps__intro-title">Dato Original</h2>
+        <p class="ps__intro-source">{{ customDate() }}</p>
+      </div>
+      <p class="ps__intro-helper">
+        El pipe date ofrece múltiples formatos y estilos de presentación para fechas.
+      </p>
+    </div>
+
+    <div class="ps__pipes-grid" role="list">
+      <app-pipe-card
+        title="Date: default"
+        badge="Fecha"
+        codeLabel="date pipe"
+        [value]="customDate() | date"
+        [description]="customDate().toString()"
+      />
+
+      <app-pipe-card
+        title="Date: 'long'"
+        badge="Fecha"
+        codeLabel="date pipe: 'long'"
+        [value]="customDate() | date: 'long'"
+        [description]="customDate().toString()"
+        tone="secondary"
+      />
+
+      <app-pipe-card
+        title="Date: 'dd/MM/yyyy'"
+        badge="Formato"
+        codeLabel="date pipe"
+        [value]="customDate() | date: 'dd/MM/yyyy'"
+        [description]="customDate().toString()"
+      />
+
+      <app-pipe-card
+        title="Date: 'HH:mm:ss'"
+        badge="Hora"
+        codeLabel="date pipe"
+        [value]="customDate() | date: 'HH:mm:ss'"
+        [description]="customDate().toString()"
+        tone="secondary"
+      />
+
+      <app-pipe-card
+        title="Date: 'EEEE d, MMMM'"
+        badge="Legible"
+        codeLabel="date pipe"
+        [value]="customDate() | date: 'EEEE d, MMMM'"
+        [description]="customDate().toString()"
+      />
+
+      <app-pipe-card
+        title="Date: 'shortTime'"
+        badge="Hora"
+        codeLabel="date pipe"
+        [value]="customDate() | date: 'shortTime'"
+        [description]="customDate().toString()"
+        tone="accent"
+      />
+    </div>
+  </section>
 </article>
