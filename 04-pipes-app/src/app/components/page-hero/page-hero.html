@@ -1,0 +1,13 @@
+<section class="ph__hero" [attr.aria-labelledby]="titleId()">
+	<div class="ph__hero-decoration" aria-hidden="true"></div>
+
+	<div class="ph__hero-content">
+		<p class="ph__eyebrow">{{ eyebrow() }}</p>
+
+		<h1 [id]="titleId()" class="ph__title">{{ title() }}</h1>
+
+		<p class="ph__lead">{{ lead() }}</p>
+
+		<p class="ph__meta">{{ meta() }}</p>
+	</div>
+</section>

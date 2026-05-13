@@ -1,1 +1,38 @@
-<p>numbers-page works!</p>
+<app-page-hero
+  titleId="numbers-page-title"
+  eyebrow="Curso Angular · Pipes"
+  title="Pipes Numéricos"
+  lead="Descubre los pipes numéricos de Angular y cómo utilizarlos para transformar datos numéricos en tus aplicaciones."
+/>
+
+<app-pipe-card
+  title="Number: '1.2-2'"
+  badge="Numérico"
+  codeLabel="number pipe"
+  [value]="totalSells() | number: '1.2-2'"
+  [description]="totalSells()"
+/>
+
+<app-pipe-card
+  title="Number: '1.1-2'"
+  badge="Numérico"
+  codeLabel="number pipe"
+  [value]="totalSells() + 1234.1 | number: '1.1-2'"
+  [description]="totalSells()"
+/>
+
+<app-pipe-card
+  title="Currency"
+  badge="Moneda"
+  codeLabel="currency pipe"
+  [value]="totalSells() | currency: 'MXN'"
+  [description]="totalSells()"
+/>
+
+<app-pipe-card
+  title="Percent"
+  badge="Porcentaje"
+  codeLabel="percent pipe"
+  [value]="percent() | percent"
+  [description]="percent()"
+/>

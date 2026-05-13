@@ -1,0 +1,67 @@
+@reference '#styles/app.css';
+
+:host {
+	@apply block;
+}
+
+@layer components {
+	.ph__hero {
+		@apply relative overflow-hidden px-4 py-16 sm:py-20 md:py-24;
+		background-image: linear-gradient(
+			145deg,
+			color-mix(in oklab, var(--color-primary) 16%, transparent),
+			color-mix(in oklab, var(--color-base-100) 94%, transparent)
+		);
+	}
+
+	.ph__hero-decoration {
+		@apply absolute inset-0 -z-10;
+		background-image:
+			radial-gradient(circle at 20% 50%, color-mix(in oklab, var(--color-primary) 20%, transparent), transparent 52%),
+			radial-gradient(circle at 80% 80%, color-mix(in oklab, var(--color-secondary) 14%, transparent), transparent 50%);
+	}
+
+	.ph__hero-content {
+		@apply relative z-10 mx-auto max-w-4xl text-center;
+	}
+
+	.ph__eyebrow {
+		@apply mb-3 inline-flex rounded-full border border-primary/22 bg-primary/10 px-3 py-1 text-xs font-bold uppercase text-primary;
+		letter-spacing: 0.11em;
+	}
+
+	.ph__title {
+		@apply mb-4 text-4xl font-black leading-tight text-base-content sm:text-5xl lg:text-6xl;
+		letter-spacing: var(--apple-tracking-tight);
+		text-wrap: balance;
+	}
+
+	.ph__lead {
+		@apply mx-auto max-w-2xl text-base leading-relaxed text-base-content/80 sm:text-lg;
+		text-wrap: pretty;
+	}
+
+	.ph__meta {
+		@apply mt-5 text-xs font-semibold uppercase text-base-content/66;
+		letter-spacing: 0.12em;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.ph__hero {
+			background-image: linear-gradient(
+				145deg,
+				color-mix(in oklab, var(--color-primary) 30%, var(--color-base-100) 70%),
+				color-mix(in oklab, var(--color-secondary) 18%, var(--color-base-100) 82%)
+			);
+		}
+
+		.ph__lead {
+			@apply text-base-content/88;
+		}
+
+		.ph__eyebrow,
+		.ph__meta {
+			@apply text-base-content/76;
+		}
+	}
+}

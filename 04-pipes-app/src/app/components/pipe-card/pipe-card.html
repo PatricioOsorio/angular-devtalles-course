@@ -1,0 +1,17 @@
+<article
+	class="pc__card"
+	[class.pc__card--secondary]="tone() === 'secondary'"
+	[class.pc__card--accent]="tone() === 'accent'"
+>
+	<header class="pc__header">
+		<h3 class="pc__title">{{ title() }}</h3>
+		<span class="pc__badge">{{ badge() }}</span>
+	</header>
+
+	<div class="pc__output">
+		<code class="pc__label">{{ codeLabel() }}</code>
+		<output class="pc__result">{{ value() }}</output>
+	</div>
+
+	<p class="pc__description">{{ description() }}</p>
+</article>
