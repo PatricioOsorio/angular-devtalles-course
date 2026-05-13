@@ -1,0 +1,61 @@
+@reference '#styles/app.css';
+
+:host {
+	@apply block;
+}
+
+@layer components {
+	.numbers-showcase {
+		@apply w-full;
+	}
+
+	.ns__showcase {
+		@apply mx-auto max-w-7xl px-4 py-12 md:py-16;
+	}
+
+	.ns__intro-panel {
+		@apply mb-10 grid gap-4 rounded-box border border-base-300 bg-base-100 p-6 shadow-sm sm:p-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end;
+	}
+
+	.ns__intro-copy {
+		@apply min-w-0;
+	}
+
+	.ns__intro-title {
+		@apply mb-2 text-xs font-bold uppercase text-base-content/60;
+		letter-spacing: 0.12em;
+	}
+
+	.ns__intro-source {
+		@apply text-2xl font-black text-base-content sm:text-3xl;
+		letter-spacing: var(--apple-tracking-tighter);
+	}
+
+	.ns__intro-helper {
+		@apply rounded-field border border-base-300 bg-base-200/55 px-4 py-3 text-sm leading-relaxed text-base-content/78;
+	}
+
+	.ns__pipes-grid {
+		@apply grid gap-5 sm:grid-cols-2 xl:grid-cols-3;
+	}
+
+	@media (max-width: 39.99rem) {
+		.ns__intro-helper {
+			@apply text-xs;
+		}
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.ns__intro-title {
+			@apply text-base-content/76;
+		}
+
+		.ns__intro-panel {
+			@apply border-base-content/18 bg-base-100;
+		}
+
+		.ns__intro-helper {
+			@apply border-base-content/20 bg-base-200/70 text-base-content/88;
+		}
+	}
+}

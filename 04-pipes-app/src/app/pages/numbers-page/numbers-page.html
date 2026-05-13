@@ -1,38 +1,58 @@
-<app-page-hero
-  titleId="numbers-page-title"
-  eyebrow="Curso Angular · Pipes"
-  title="Pipes Numéricos"
-  lead="Descubre los pipes numéricos de Angular y cómo utilizarlos para transformar datos numéricos en tus aplicaciones."
-/>
+<article class="numbers-showcase">
+  <app-page-hero
+    titleId="numbers-page-title"
+    eyebrow="Curso Angular · Pipes"
+    title="Pipes Numéricos"
+    lead="Descubre los pipes numéricos de Angular y cómo utilizarlos para transformar datos numéricos en tus aplicaciones."
+    meta="4 ejemplos base · number · currency · percent"
+  />
 
-<app-pipe-card
-  title="Number: '1.2-2'"
-  badge="Numérico"
-  codeLabel="number pipe"
-  [value]="totalSells() | number: '1.2-2'"
-  [description]="totalSells()"
-/>
+  <section class="ns__showcase" aria-label="Demostración de pipes numéricos">
+    <div class="ns__intro-panel">
+      <div class="ns__intro-copy">
+        <h2 class="ns__intro-title">Dato original</h2>
+        <p class="ns__intro-source">{{ totalSells() }}</p>
+      </div>
 
-<app-pipe-card
-  title="Number: '1.1-2'"
-  badge="Numérico"
-  codeLabel="number pipe"
-  [value]="totalSells() + 1234.1 | number: '1.1-2'"
-  [description]="totalSells()"
-/>
+      <p class="ns__intro-helper">
+        Los pipes numéricos cambian formato, moneda y porcentaje sin tocar el valor fuente.
+      </p>
+    </div>
 
-<app-pipe-card
-  title="Currency"
-  badge="Moneda"
-  codeLabel="currency pipe"
-  [value]="totalSells() | currency: 'MXN'"
-  [description]="totalSells()"
-/>
+    <div class="ns__pipes-grid" role="list">
+      <app-pipe-card
+        title="Number: '1.2-2'"
+        badge="Numérico"
+        codeLabel="number pipe"
+        [value]="totalSells() | number: '1.2-2'"
+        [description]="totalSells().toString()"
+      />
 
-<app-pipe-card
-  title="Percent"
-  badge="Porcentaje"
-  codeLabel="percent pipe"
-  [value]="percent() | percent"
-  [description]="percent()"
-/>
+      <app-pipe-card
+        title="Number: '1.1-2'"
+        badge="Numérico"
+        codeLabel="number pipe"
+        [value]="totalSells() + 1234.1 | number: '1.1-2'"
+        [description]="(totalSells() + 1234.1).toString()"
+        tone="secondary"
+      />
+
+      <app-pipe-card
+        title="Currency"
+        badge="Moneda"
+        codeLabel="currency pipe"
+        [value]="totalSells() | currency: 'MXN'"
+        [description]="totalSells().toString()"
+        tone="accent"
+      />
+
+      <app-pipe-card
+        title="Percent"
+        badge="Porcentaje"
+        codeLabel="percent pipe"
+        [value]="percent() | percent"
+        [description]="percent().toString()"
+      />
+    </div>
+  </section>
+</article>

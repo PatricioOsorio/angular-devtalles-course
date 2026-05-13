@@ -7,7 +7,7 @@ import { CurrencyPipe, DecimalPipe, PercentPipe } from '@angular/common';
   selector: 'app-numbers-page',
   imports: [PipeCard, PageHero, DecimalPipe, PercentPipe, CurrencyPipe],
   templateUrl: './numbers-page.html',
-  styles: ``,
+  styleUrl: './numbers-page.css',
 })
 export default class NumbersPage {
   readonly totalSells = signal(2_334_343.4345);
